@@ -80,12 +80,5 @@ body.left-nav .main-content {
 }
 @media screen and (min-width: 640px) {
     /* @media screen and (min-width: 880px) { */
-    .slide-menu-button {
-        display: none;
-    }
-    .main-content {
-        left: 320px;
-        right: 0;
-        width: auto;
-    }
+    /* css pour tablette.... */
 }

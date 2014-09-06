@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="format-detection" content="telephone=no" />
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="css/index.css" />
     <title>I was here</title>
 </head>
+
 <body>
     <div class="topcoat-navigation-bar">
         <div class="topcoat-navigation-bar__item left quarter">
@@ -39,7 +41,13 @@
             </ul>
         </div>
     </nav>
-    <div class="main-content"></div>
+    <div class="main-content">
+        <video id="video" width="320" height="240" autoplay></video>
+        <button id="snap">Snap Photo</button>
+        <canvas id="canvas" width="320" height="240"></canvas>
+
+    </div>
     <script type="application/javascript" src="js/index.js"></script>
 </body>
+
 </html>
