@@ -28,24 +28,44 @@
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <link rel="stylesheet" href="css/topcoat-mobile-light.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <title>I was here</title>
 </head>
 
 <body>
     <div class="topcoat-navigation-bar">
-        <div class="topcoat-navigation-bar__item center full">
-            <h1 class="topcoat-navigation-bar__title">I was here !</h1>
+        <div class="topcoat-navigation-bar__item left quarter">
+            <a id="slide-menu-button" class="topcoat-icon-button--quiet slide-menu-button">
+                <span class="topcoat-icon topcoat-icon--menu-stack"></span>
+            </a>
+        </div>
+        <div class="topcoat-navigation-bar__item center half">
+            <h1 class="topcoat-navigation-bar__title">I was here</h1>
+        </div>
+        <div class="topcoat-navigation-bar__item right quarter">
+            <a class="topcoat-icon-button--quiet">
+                <span class="topcoat-icon topcoat-icon--edit"></span>
+
+            </a>
         </div>
     </div>
-    <div id="content">
-    </div>
+    <nav class="side-nav">
+        <div class="topcoat-list__container side-nav__list__container">
+            <ul class="topcoat-list side-nav__list">
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="#" class="side-nav__button">Item</a>
+                </li>
+                <li class="topcoat-list__item side-nav__list__item is-active">
+                    <a href="#" class="side-nav__button">Item</a>
+                </li>
+                <li class="topcoat-list__item side-nav__list__item">
+                    <a href="#" class="side-nav__button">Item</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main-content"></div>
     <script type="application/javascript" src="js/index.js" />
-    <script type="text/template" id="templateTakeAPicture">
-        <p>We should be doing video here !</p>
-    </script>
-    <script type="text/template" id="templateShowPeopleNearMe">
-        <p>Here's people that were near you !</p>
-    </script>
 </body>
 
 </html>
