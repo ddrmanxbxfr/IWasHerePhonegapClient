@@ -21,6 +21,17 @@ function preparerOnDeviceReady() {
     watchGeoID = navigator.geolocation.watchPosition(onSuccessGeoLoc, onErrorGeoLoc, options);
 }
 
+function updateLabelGeoConfirmation(isGeoReady) {
+    var docToUpdate = document.getElementById('geolocationStatus')
+    if (isGeoReady) {
+        docToUpdate.textContent = "We're preparing your black sharpie to write down a message here. Hold on.";
+    } else {
+        docToUpdate.textContent = "We're preparing your black sharpie to write down a message here. Hold on.";
+    }
+}
+
+
+/* Stuff happends when app starts... */
 document.addEventListener("deviceready", preparerOnDeviceReady, false);
 
 window.onload = function () {
