@@ -4,7 +4,7 @@
     <description>
         I was here ! Is a geocaching like application. Go somewhere mark your territories !
     </description>
-    <author email="bidon@bidon.com" href="#">
+    <author email="bidon@bidon.com" href="http://google.ca">
         APES Team
     </author>
     <preference name="permissions" value="none" />

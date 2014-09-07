@@ -64,4 +64,5 @@ document.addEventListener("deviceready", preparerOnDeviceReady, false);
 window.onload = function () {
     "use strict";
     configurerBtnEvents();
+    updateUiGeoConfirmation(false);
 };
