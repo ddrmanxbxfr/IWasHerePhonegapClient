@@ -1,6 +1,8 @@
+/*global alert*/
 var watchGeoID = null;
 
 function verifierSiAccuracyEstOk(position) {
+    "use strict";
     if (position.coords.accuracy <= 100) {
         return true;
     } else {
