@@ -28,15 +28,25 @@ function updateUiGeoConfirmation(isGeoReady) {
     btnMark = document.getElementById('roundBtn');
     if (isGeoReady) {
         docToUpdate.textContent = "Ok ! you're ready to mark your territory";
-        btnMark.classList.remove('button-not-ready');
+        if (btnMark.classList.contains('button-not-ready')) {
+            btnMark.classList.remove('button-not-ready');
+        }
+
+
         btnMark.classList.add('button-ready');
     } else {
         docToUpdate.textContent = "We're preparing your black sharpie to write down a message here. Hold on.";
         if (btnMark.classList.contains('button-ready')) {
             btnMark.classList.remove('button-ready');
         }
+        if (btnMark.classList.contains('round-button-circle-ready')) {
+            btnMark.classList.remove('round-button-circle-ready');
+        }
         if (btnMark.classList.contains('button-not-ready') === false) {
             btnMark.classList.add('button-not-ready');
+        }
+        if (btnMark.classList.contains('round-button-circle-not-ready') === false) {
+            btnMark.classList.add('round-button-circle-not-ready');
         }
     }
 }

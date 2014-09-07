@@ -93,9 +93,17 @@ body.left-nav .main-content {
     height: 0;
     padding-bottom: 100%;
     border-radius: 50%;
-    border: 10px solid #F04115;
+    border: 10px solid;
     overflow: hidden;
     box-shadow: 0 0 3px gray;
+}
+
+.round-button-circle-not-ready {
+    border-color: #F04115;
+}
+
+.round-button-circle-ready {
+    border-color: #233A00;
 }
 
 .button-not-ready {
@@ -103,7 +111,7 @@ body.left-nav .main-content {
 }
 
 .button-ready {
-    background: #233A00;
+    background: #436117;
 }
 
 .round-button a {

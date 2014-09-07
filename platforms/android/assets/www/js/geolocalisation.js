@@ -1,4 +1,4 @@
-/*global alert*/
+/*global alert, updateUiGeoConfirmation*/
 var watchGeoID = null;
 
 function verifierSiAccuracyEstOk(position) {
@@ -15,9 +15,9 @@ function onSuccessGeoLoc(position) {
     "use strict";
     var element = document.getElementById('geolocation');
     if (verifierSiAccuracyEstOk(position)) {
-        element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' +
-            'Longitude: ' + position.coords.longitude + '<br />' +
-            '<hr />' + element.innerHTML;
+        updateUiGeoConfirmation(true);
+    } else {
+        updateUiGeoConfirmation(false);
     }
 }
 
