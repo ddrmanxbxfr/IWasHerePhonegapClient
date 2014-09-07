@@ -21,12 +21,21 @@ function preparerOnDeviceReady() {
     watchGeoID = navigator.geolocation.watchPosition(onSuccessGeoLoc, onErrorGeoLoc, options);
 }
 
-function updateLabelGeoConfirmation(isGeoReady) {
+function updateUiGeoConfirmation(isGeoReady) {
     var docToUpdate = document.getElementById('geolocationStatus')
+    var btnMark = document.getElementById('roundBtn');
     if (isGeoReady) {
-        docToUpdate.textContent = "We're preparing your black sharpie to write down a message here. Hold on.";
+        docToUpdate.textContent = "Ok ! you're ready to mark your territory";
+        btnMark.classList.remove('button-not-ready');
+        btnMark.classList.add('button-ready');
     } else {
         docToUpdate.textContent = "We're preparing your black sharpie to write down a message here. Hold on.";
+        if (btnMark.classList.contains('button-ready')) {
+            btnMark.classList.remove('button-ready');
+        }
+        if (btnMark.classList.contains('button-not-ready') === false) {
+            btnMark.classList.add('button-not-ready');
+        }
     }
 }
 
