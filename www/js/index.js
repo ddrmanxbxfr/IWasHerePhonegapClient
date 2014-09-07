@@ -31,9 +31,15 @@ function updateUiGeoConfirmation(isGeoReady) {
         if (btnMark.classList.contains('button-not-ready')) {
             btnMark.classList.remove('button-not-ready');
         }
-
-
-        btnMark.classList.add('button-ready');
+        if (btnMark.classList.contains('round-button-circle-not-ready')) {
+            btnMark.classList.remove('round-button-circle-not-ready');
+        }
+        if (btnMark.contains('round-button-circle-ready') === false) {
+            btnMark.classList.add('round-button-circle-ready');
+        }
+        if (btnMark.contains('button-ready') === false) {
+            btnMark.classList.add('button-ready');
+        }
     } else {
         docToUpdate.textContent = "We're preparing your black sharpie to write down a message here. Hold on.";
         if (btnMark.classList.contains('button-ready')) {
