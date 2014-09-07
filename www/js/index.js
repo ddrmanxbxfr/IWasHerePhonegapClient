@@ -1,4 +1,4 @@
-/*global console */
+/*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID */
 function configurerBtnEvents() {
     "use strict";
     var slideMenuButton = document.getElementById('slide-menu-button');
@@ -22,8 +22,10 @@ function preparerOnDeviceReady() {
 }
 
 function updateUiGeoConfirmation(isGeoReady) {
-    var docToUpdate = document.getElementById('geolocationStatus')
-    var btnMark = document.getElementById('roundBtn');
+    "use strict";
+    var docToUpdate, btnMark;
+    docToUpdate = document.getElementById('geolocationStatus');
+    btnMark = document.getElementById('roundBtn');
     if (isGeoReady) {
         docToUpdate.textContent = "Ok ! you're ready to mark your territory";
         btnMark.classList.remove('button-not-ready');
