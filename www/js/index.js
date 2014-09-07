@@ -3,6 +3,7 @@ function configurerBtnEvents() {
     "use strict";
     var slideMenuButton, btnMarkYourTerritory;
     slideMenuButton = document.getElementById('slide-menu-button');
+    btnMarkYourTerritory = document.getElementById('roundBtn');
     slideMenuButton.onclick = function (e) {
         if (document.body.classList.contains('left-nav')) {
             document.body.classList.remove('left-nav');
@@ -10,6 +11,10 @@ function configurerBtnEvents() {
             document.body.classList.add('left-nav');
         }
     };
+
+    btnMarkYourTerritory.onclick = function (e) {
+           showOverlay('overlay_leaveAMessage');
+    }
 }
 
 function preparerOnDeviceReady() {
