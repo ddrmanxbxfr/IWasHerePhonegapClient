@@ -48,5 +48,6 @@ function configurerBtnEvents() {
 window.onload = function () {
     "use strict";
     configurerBtnEvents();
-    demarerCamera();
+    navigator.camera.showPreview("preview");
+    //demarerCamera();
 };

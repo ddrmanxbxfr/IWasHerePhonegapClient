@@ -4,7 +4,22 @@
         "uninstalled": []
     },
     "config_munge": {
-        "files": {}
+        "files": {
+            "framework": {
+                "parents": {
+                    "AssetsLibrary.framework": [],
+                    "MobileCoreServices.framework": [],
+                    "CoreGraphics.framework": [],
+                    "ImageIO.framework": [],
+                    "CoreLocation.framework": []
+                }
+            },
+            "config.xml": {
+                "parents": {
+                    "/*": []
+                }
+            }
+        }
     },
     "installed_plugins": {},
     "dependent_plugins": {}
