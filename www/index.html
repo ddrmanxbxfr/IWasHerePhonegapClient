@@ -8,6 +8,7 @@
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <link rel="stylesheet" href="css/topcoat-mobile-light.css" />
+    <link rel="stylesheet" href="css/topcoat-overlay.css" />
     <link rel="stylesheet" href="css/index.css" />
     <title>I was here</title>
 </head>
@@ -42,6 +43,35 @@
         </div>
     </nav>
     <div class="main-content">
+
+        <div id="overlay_locatingUser" class="off">
+            <div class="topcoat-overlay-bg"></div>
+            <aside class="topcoat-overlay center">
+                <h3 class="topcoat-overlay__title">Hold on dude we're locating you !</h3>
+                <p>
+                    <div id='spinner' class='topcoat-spinner'></div>
+                    <div class='topcoat-progress-bar centerize'>
+                        <span id="progress_bar" class='progress' style='width:10%'></span>
+                    </div>
+                    <div class="topcoat-overlay-buttons">
+                        <button role="button" class="topcoat-button--cta">Annuler</button>
+                    </div>
+                </p>
+            </aside>
+        </div>
+
+        <div id="overlay_leaveAMessage" class="off">
+            <div class="topcoat-overlay-bg"></div>
+            <aside class="topcoat-overlay center">
+                <h3 class="topcoat-overlay__title">Alright, what do yo want to write down ?</h3>
+                <textarea class="topcoat-textarea" rows="6" cols="15" placeholder="Textarea"></textarea>
+
+                <div class="topcoat-overlay-buttons">
+                    <button role="button" class="topcoat-button--cta">Send it !</button>
+                </div>
+            </aside>
+        </div>
+
         <div class="center">
             <p id="geolocationStatus"></p>
         </div>
