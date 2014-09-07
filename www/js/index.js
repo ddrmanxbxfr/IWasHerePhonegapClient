@@ -13,7 +13,10 @@ function configurerBtnEvents() {
     };
 
     btnMarkYourTerritory.onclick = function (e) {
-           showOverlay('overlay_leaveAMessage');
+        "use strict";
+        if (isUserGeoLocated) {
+            showOverlay('overlay_leaveAMessage');
+        }
     }
 }
 
