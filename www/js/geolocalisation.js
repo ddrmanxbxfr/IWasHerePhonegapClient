@@ -1,4 +1,4 @@
-/*global alert*/
+/*global alert, updateUiGeoConfirmation*/
 var watchGeoID = null;
 
 function verifierSiAccuracyEstOk(position) {
