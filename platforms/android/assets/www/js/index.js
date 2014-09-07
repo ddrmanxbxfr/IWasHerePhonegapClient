@@ -36,9 +36,10 @@ function onErrorGeoLoc(error) {
 function preparerOnDeviceReady() {
     "use strict";
     var options = {
-        timeout: 30000
+        timeout: 30000,
+        enableHighAccuracy: true
     };
-    watchID = navigator.geolocation.watchPosition(onSuccessGeoLoc, onErrorGeoLoc, options);
+    watchGeoID = navigator.geolocation.watchPosition(onSuccessGeoLoc, onErrorGeoLoc, options);
 }
 
 document.addEventListener("deviceready", preparerOnDeviceReady, false);
