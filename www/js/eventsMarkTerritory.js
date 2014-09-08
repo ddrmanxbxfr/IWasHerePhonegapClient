@@ -41,8 +41,6 @@ function setupBtnMarkTerritory() {
 
     function modalMarkTerritory() {
         /* fonction pour init le choose mode... */
-
-
         function setupChooseMode() {
             function setupBtnChooseMode() {
                 function overlay_EnterMsg_CloseModal() {
@@ -53,9 +51,7 @@ function setupBtnMarkTerritory() {
                 function overlay_modeText_Enter() {
                     function setupBtn() {
                         function overlay_sendToAPI_HideOverlay() {
-                            var btnSendToApiClose;
-                            btnSendToApiClose = document.getElementById('btnSendToApiClose');
-                            addClass(btnSendToApiClose, 'off');
+                            addClass(document.getElementById('btnSendToApiClose'), 'off');
                             startGeolocating();
                             hideOverlay('overlay_sendingToAPI');
                         }
