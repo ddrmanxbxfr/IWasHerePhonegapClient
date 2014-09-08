@@ -1,4 +1,4 @@
-/*global alert, updateUiGeoConfirmation*/
+/*global alert, updateUiGeoConfirmation, templateLoaded, parseGeoResultsSeeNearMarks, parseGeoResultsMarkTerritory*/
 var currentGeoCoords, watchGeoID, isUserGeoLocated;
 watchGeoID = null;
 isUserGeoLocated = false;
@@ -7,7 +7,6 @@ function onSuccessGeoLoc(position) {
     "use strict";
 
     function verifierSiAccuracyEstOk(position) {
-        "use strict";
         if (position.coords.accuracy <= 2000) {
             return true;
         } else {
@@ -15,13 +14,12 @@ function onSuccessGeoLoc(position) {
         }
     }
 
-    function runUiMethodsDependingOnView() {
-        "use strict";
+    function runUiMethodsDependingOnView(position) {
         if (templateLoaded === "TemplateShowNearMarks") {
-            parseGeoResultsSeeNearMarks();
+            parseGeoResultsSeeNearMarks(position);
         } else {
             if (templateLoaded === "TemplateMarkTerritory") {
-                parseGeoResultsMarkTerritory();
+                parseGeoResultsMarkTerritory(position);
             }
         }
     }
@@ -33,7 +31,7 @@ function onSuccessGeoLoc(position) {
     };
     var element = document.getElementById('geolocation');
     isUserGeoLocated = true;
-    runUiMethodsDependingOnView();
+    runUiMethodsDependingOnView(position);
 }
 
 function onErrorGeoLoc(error) {

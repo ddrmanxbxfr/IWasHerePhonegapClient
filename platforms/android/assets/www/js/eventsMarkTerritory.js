@@ -129,7 +129,7 @@ function setupMarkTerritoryView() {
     updateUiGeoConfirmation(false);
 }
 
-function parseGeoResultsMarkTerritory() {
+function parseGeoResultsMarkTerritory(position) {
     "use strict";
     if (verifierSiAccuracyEstOk(position)) {
         updateUiGeoConfirmation(true);

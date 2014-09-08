@@ -1,5 +1,5 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass*/
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded, verifierSiAccuracyEstOk*/
 
 function overlay_sendToAPI_HideOverlay() {
     "use strict";
@@ -75,16 +75,6 @@ function sendToApi() {
     overlay_sendToAPI_SetUIForLoading();
 }
 
-
-function modalMarkTerritory() {
-    "use strict";
-    if (isUserGeoLocated && currentGeoCoords !== undefined) {
-        stopGeolocating();
-        showOverlay('overlay_leaveAMessage');
-    }
-}
-
-
 function updateUiGeoConfirmation(isGeoReady) {
     "use strict";
     var docToUpdate, btnMark;
@@ -109,6 +99,14 @@ function updateUiGeoConfirmation(isGeoReady) {
 
 function setupBtnMarkTerritory() {
     "use strict";
+
+    function modalMarkTerritory() {
+        if (isUserGeoLocated && currentGeoCoords !== undefined) {
+            stopGeolocating();
+            showOverlay('overlay_leaveAMessage');
+        }
+    }
+
     var btnMarkYourTerritory, btnSendToApi, btnSendToApiClose;
     btnMarkYourTerritory = document.getElementById('roundBtn');
     btnSendToApi = document.getElementById('btnSendToApi');

@@ -3,16 +3,17 @@ var currentGeoCoords, watchGeoID, isUserGeoLocated;
 watchGeoID = null;
 isUserGeoLocated = false;
 
+function verifierSiAccuracyEstOk(position) {
+    "use strict";
+    if (position.coords.accuracy <= 2000) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function onSuccessGeoLoc(position) {
     "use strict";
-
-    function verifierSiAccuracyEstOk(position) {
-        if (position.coords.accuracy <= 2000) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     function runUiMethodsDependingOnView(position) {
         if (templateLoaded === "TemplateShowNearMarks") {
