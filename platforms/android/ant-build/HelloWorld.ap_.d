@@ -43,6 +43,7 @@
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/spec \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/spec.html \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/index.css \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/spinner.css \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/topcoat-mobile-light.css \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/topcoat-overlay.css \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/SourceCodePro-Black.otf \

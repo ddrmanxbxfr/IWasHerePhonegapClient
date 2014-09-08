@@ -33,6 +33,9 @@ function SendToApi() {
     $.post('http://192.168.2.26:4711/api/iwashere', data, function (response) {
         console.log('we sent the data to api...');
     });
+
+    hideOverlay('overlay_leaveAMessage');
+    showOverlay('overlay_sendingToAPI');
 }
 
 

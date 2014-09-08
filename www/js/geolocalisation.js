@@ -6,7 +6,7 @@ isUserGeoLocated = false;
 
 function verifierSiAccuracyEstOk(position) {
     "use strict";
-    if (position.coords.accuracy <= 100) {
+    if (position.coords.accuracy <= 2000) {
         return true;
     } else {
         return false;
