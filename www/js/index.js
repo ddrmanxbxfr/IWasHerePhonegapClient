@@ -1,5 +1,5 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords,$, hideOverlay*/
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich*/
 
 
 function removeClass(documentToWorkOn, className) {
