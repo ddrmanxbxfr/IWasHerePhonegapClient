@@ -48,6 +48,10 @@ function setupBtnMarkTerritory() {
                     hideOverlay('overlay_leaveAMessage');
                 }
 
+                function overlay_ChooseMode_GoBackToThisModal() {
+                    modalMarkTerritory();
+                }
+
                 function overlay_modeText_Enter() {
                     function setupBtn() {
                         function overlay_sendToAPI_HideOverlay() {
@@ -106,7 +110,7 @@ function setupBtnMarkTerritory() {
 
                         document.getElementById('btnSendToApi').onclick = sendToApi;
                         document.getElementById('btnSendToApiClose').onclick = overlay_sendToAPI_HideOverlay;
-                        document.getElementById('btnCancel').onclick = overlay_EnterMsg_CloseModal;
+                        document.getElementById('btnCancel').onclick = overlay_ChooseMode_GoBackToThisModal;
                     }
 
                     $('#templateMode').empty();
