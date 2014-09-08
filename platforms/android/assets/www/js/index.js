@@ -1,9 +1,25 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords*/
+stopGeolocating, currentGeoCoords,$, hideOverlay*/
+
+
+function overlay_sendToAPI_HideOverlay() {
+    "use strict";
+    var btnSendToApiClose;
+    btnSendToApiClose = document.getElementById('btnSendToApiClose');
+    if (btnSendToApiClose.classList.contains('off') === false) {
+        btnSendToApiClose.classList.add('off');
+    }
+
+    startGeolocating();
+
+    hideOverlay('overlay_sendingToAPI');
+}
 
 function overlay_sendToAPI_LoadingDone() {
     "use strict";
-    var elementToChange = document.getElementById('currentProgress');
+    var elementToChange, btnSendToApiClose;
+    elementToChange = document.getElementById('currentProgress');
+    btnSendToApiClose = document.getElementById('btnSendToApiClose');
     // List of class to swap fa-circle-o-notch fa-spin
     if (elementToChange.classList.contains('fa-spin')) {
         elementToChange.classList.remove('fa-spin');
@@ -20,9 +36,14 @@ function overlay_sendToAPI_LoadingDone() {
     if (elementToChange.classList.contains('green-icon') === false) {
         elementToChange.classList.add('green-icon');
     }
+
+    document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
+    if (btnSendToApiClose.classList.contains('off')) {
+        btnSendToApiClose.classList.remove('off');
+    }
 }
 
-function SendToApi() {
+function sendToApi() {
     "use strict";
 
     function createGeoJsonFromProps(txtIfPresent) {
@@ -30,10 +51,7 @@ function SendToApi() {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [
-           currentGeoCoords.lat,
-           currentGeoCoords.lng
-       ]
+                "coordinates": [currentGeoCoords.lat, currentGeoCoords.lng]
             },
             "properties": {
                 geoAccuracy: currentGeoCoords.accuracy
@@ -59,10 +77,11 @@ function SendToApi() {
 
     hideOverlay('overlay_leaveAMessage');
     showOverlay('overlay_sendingToAPI');
+    document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
 }
 
 
-function ModalMarkTerritory() {
+function modalMarkTerritory() {
     "use strict";
     if (isUserGeoLocated && currentGeoCoords !== undefined) {
         stopGeolocating();
@@ -72,10 +91,11 @@ function ModalMarkTerritory() {
 
 function configurerBtnEvents() {
     "use strict";
-    var slideMenuButton, btnMarkYourTerritory, btnSendToApi;
+    var slideMenuButton, btnMarkYourTerritory, btnSendToApi, btnSendToApiClose;
     slideMenuButton = document.getElementById('slide-menu-button');
     btnMarkYourTerritory = document.getElementById('roundBtn');
     btnSendToApi = document.getElementById('btnSendToApi');
+    btnSendToApiClose = document.getElementById('btnSendToApiClose');
     slideMenuButton.onclick = function (e) {
         if (document.body.classList.contains('left-nav')) {
             document.body.classList.remove('left-nav');
@@ -84,8 +104,9 @@ function configurerBtnEvents() {
         }
     };
 
-    btnMarkYourTerritory.onclick = ModalMarkTerritory;
-    btnSendToApi.onclick = SendToApi;
+    btnMarkYourTerritory.onclick = modalMarkTerritory;
+    btnSendToApi.onclick = sendToApi;
+    btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
 }
 
 function updateUiGeoConfirmation(isGeoReady) {

@@ -1,11 +1,10 @@
 #currentProgress {
- font-size: 1000%;
+    font-size: 1000%;
+    display: block;
 }
-
 .green-icon {
     color: #46E85B;
 }
-
 /*.spinner {
     height: 20%;
     // width needs to be double the height
