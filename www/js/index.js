@@ -20,7 +20,7 @@ function animateSideMenu() {
 
 function setupActiveButton(buttonNameActive, buttonNameOld) {
     removeClass(document.getElementById(buttonNameOld), 'is-active');
-    addClass(document.getElementById(buttonNameActive, 'is-active');
+    addClass(document.getElementById(buttonNameActive), 'is-active');
 }
 
 function setupSideMenuBtn() {
