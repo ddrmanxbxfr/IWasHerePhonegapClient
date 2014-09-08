@@ -2,13 +2,26 @@
 stopGeolocating, currentGeoCoords,$, hideOverlay*/
 
 
+function removeClass(documentToWorkOn, className) {
+    "use strict";
+    if (documentToWorkOn.classList.contains(className)) {
+        documentToWorkOn.classList.remove(className);
+    }
+}
+
+function addClass(documentToWorkOn, className) {
+    "use strict";
+    if (documentToWorkOn.classList.contains(className) === false) {
+        documentToWorkOn.classList.add(className);
+    }
+}
+
 function overlay_sendToAPI_HideOverlay() {
     "use strict";
     var btnSendToApiClose;
     btnSendToApiClose = document.getElementById('btnSendToApiClose');
-    if (btnSendToApiClose.classList.contains('off') === false) {
-        btnSendToApiClose.classList.add('off');
-    }
+
+    addClass(btnSendToApiClose, 'off');
 
     startGeolocating();
 
@@ -21,26 +34,13 @@ function overlay_sendToAPI_LoadingDone() {
     elementToChange = document.getElementById('currentProgress');
     btnSendToApiClose = document.getElementById('btnSendToApiClose');
     // List of class to swap fa-circle-o-notch fa-spin
-    if (elementToChange.classList.contains('fa-spin')) {
-        elementToChange.classList.remove('fa-spin');
-    }
-
-    if (elementToChange.classList.contains('fa-circle-o-notch')) {
-        elementToChange.classList.remove('fa-circle-o-notch');
-    }
-
-    if (elementToChange.classList.contains('fa-check-square') === false) {
-        elementToChange.classList.add('fa-check-square');
-    }
-
-    if (elementToChange.classList.contains('green-icon') === false) {
-        elementToChange.classList.add('green-icon');
-    }
+    removeClass(elementToChange, 'fa-spin');
+    removeClass(elementToChange, 'fa-circle-o-notch');
+    removeClass(btnSendToApiClose, 'off');
+    addClass(elementToChange, 'fa-check-square');
+    addClass(elementToChange, 'green-icon');
 
     document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
-    if (btnSendToApiClose.classList.contains('off')) {
-        btnSendToApiClose.classList.remove('off');
-    }
 }
 
 function sendToApi() {
@@ -116,32 +116,17 @@ function updateUiGeoConfirmation(isGeoReady) {
     btnMark = document.getElementById('roundBtn');
     if (isGeoReady) {
         docToUpdate.textContent = "Ok ! you're ready to mark your territory";
-        if (btnMark.classList.contains('button-not-ready')) {
-            btnMark.classList.remove('button-not-ready');
-        }
-        if (btnMark.classList.contains('round-button-circle-not-ready')) {
-            btnMark.classList.remove('round-button-circle-not-ready');
-        }
-        if (btnMark.contains('round-button-circle-ready') === false) {
-            btnMark.classList.add('round-button-circle-ready');
-        }
-        if (btnMark.contains('button-ready') === false) {
-            btnMark.classList.add('button-ready');
-        }
+
+        removeClass(btnMark, 'button-not-ready');
+        removeClass(btnMark, 'round-button-circle-not-ready');
+        addClass(btnMark, 'round-button-circle-ready');
+        addClass(btnMark, 'button-ready');
     } else {
         docToUpdate.textContent = "We're preparing your black sharpie to write down a message here. Hold on.";
-        if (btnMark.classList.contains('button-ready')) {
-            btnMark.classList.remove('button-ready');
-        }
-        if (btnMark.classList.contains('round-button-circle-ready')) {
-            btnMark.classList.remove('round-button-circle-ready');
-        }
-        if (btnMark.classList.contains('button-not-ready') === false) {
-            btnMark.classList.add('button-not-ready');
-        }
-        if (btnMark.classList.contains('round-button-circle-not-ready') === false) {
-            btnMark.classList.add('round-button-circle-not-ready');
-        }
+        addClass(btnMark, 'button-not-ready');
+        addClass(btnMark, 'round-button-circle-not-ready');
+        removeClass(btnMark, 'round-button-circle-ready');
+        removeClass(btnMark, 'button-ready');
     }
 }
 
