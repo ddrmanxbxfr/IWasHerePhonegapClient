@@ -51,7 +51,7 @@ function parseApiResults(data) {
             listItems.push(ich.TemplateShowNearMarks_Item({
                 name: data.features[iCpt].properties.geoAccuracy
             }));
-        };
+        }
     }
 
     list = ich.TemplateShowNearMarks_ListItem();
