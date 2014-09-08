@@ -4,13 +4,22 @@ stopGeolocating, currentGeoCoords,$, hideOverlay*/
 
 function overlay_sendToAPI_HideOverlay() {
     "use strict";
+    var btnSendToApiClose;
+    btnSendToApiClose = document.getElementById('btnSendToApiClose');
+    if (btnSendToApiClose.classList.contains('off') === false) {
+        btnSendToApiClose.classList.add('off');
+    }
 
+    startGeolocating();
+
+    hideOverlay('overlay_sendingToAPI');
 }
 
 function overlay_sendToAPI_LoadingDone() {
     "use strict";
-    var elementToChange;
+    var elementToChange, btnSendToApiClose;
     elementToChange = document.getElementById('currentProgress');
+    btnSendToApiClose = document.getElementById('btnSendToApiClose');
     // List of class to swap fa-circle-o-notch fa-spin
     if (elementToChange.classList.contains('fa-spin')) {
         elementToChange.classList.remove('fa-spin');
@@ -29,6 +38,9 @@ function overlay_sendToAPI_LoadingDone() {
     }
 
     document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
+    if (btnSendToApiClose.classList.contains('off')) {
+        btnSendToApiClose.classList.remove('off');
+    }
 }
 
 function sendToApi() {
