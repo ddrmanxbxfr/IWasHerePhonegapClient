@@ -43,9 +43,15 @@ function parseApiResults(data) {
     len = data.features.length;
     listItems = [];
     for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
-        listItems.push(ich.TemplateShowNearMarks_Item({
-            name: data.features[iCpt].properties.geoAccuracy
-        }));
+        if (data.features[iCpt].properties.textNote !== undefined) {
+            listItems.push(ich.TemplateShowNearMarks_Item({
+                name: data.features[iCpt].properties.tex
+            }));
+        } else {
+            listItems.push(ich.TemplateShowNearMarks_Item({
+                name: data.features[iCpt].properties.geoAccuracy
+            }));
+        };
     }
 
     list = ich.TemplateShowNearMarks_ListItem();
@@ -58,7 +64,7 @@ function parseApiResults(data) {
     }
 
     listStatistics.append(ich.TemplateShowNearMarks_Item({
-        name: "Number of contributions around : " + data.properties.nbSansContribution
+        name: "Number of contributions around : " + data.properties.nbSansContributions
     }));
 
     $('#listNearMarks').empty();
