@@ -44,79 +44,79 @@ function setupBtnMarkTerritory() {
 
 
         function setupChooseMode() {
-            function overlay_EnterMsg_CloseModal() {
-                startGeolocating();
-                hideOverlay('overlay_leaveAMessage');
-            }
-
-            function overlay_modeText_Enter() {
-                function setupBtn() {
-                    function overlay_sendToAPI_HideOverlay() {
-                        var btnSendToApiClose;
-                        btnSendToApiClose = document.getElementById('btnSendToApiClose');
-                        addClass(btnSendToApiClose, 'off');
-                        startGeolocating();
-                        hideOverlay('overlay_sendingToAPI');
-                    }
-
-                    function sendToApi() {
-                        function overlay_sendToAPI_SetUIForLoading() {
-                            var elementToChange, btnSendToApiClose;
-                            elementToChange = document.getElementById('currentProgress');
-                            btnSendToApiClose = document.getElementById('btnSendToApiClose');
-                            document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
-                            addClass(elementToChange, 'fa-spin');
-                            addClass(elementToChange, 'fa-circle-o-notch');
-                            addClass(btnSendToApiClose, 'off');
-                            removeClass(elementToChange, 'fa-check-square');
-                            removeClass(elementToChange, 'green-icon');
-                        }
-
-
-                        function createGeoJsonFromProps(txtIfPresent) {
-                            var baseData = {
-                                "type": "Feature",
-                                "geometry": {
-                                    "type": "Point",
-                                    "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
-                                },
-                                "properties": {
-                                    geoAccuracy: currentGeoCoords.accuracy
-                                }
-                            };
-
-                            if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
-                                baseData.properties.textNote = txtIfPresent;
-                            }
-                            return baseData;
-                        }
-                        var txtArea, request, data;
-                        txtArea = document.getElementById('txtNote').value;
-
-                        data = createGeoJsonFromProps(txtArea);
-
-                        // Do prepare the request to send to api...
-                        $.post(getApiUrl(), data, function (response) {
-                            if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
-                                overlay_sendToAPI_LoadingDone();
-                            }
-                        });
-
-                        hideOverlay('overlay_leaveAMessage');
-                        showOverlay('overlay_sendingToAPI');
-                        overlay_sendToAPI_SetUIForLoading();
-                    }
-
-                    document.getElementById('btnSendToApi').onclick = sendToApi;
-                    document.getElementById('btnSendToApiClose').onclick = overlay_sendToAPI_HideOverlay;
-                    document.getElementById('btnCancel').onclick = overlay_EnterMsg_CloseModal;
+            function setupBtnChooseMode() {
+                function overlay_EnterMsg_CloseModal() {
+                    startGeolocating();
+                    hideOverlay('overlay_leaveAMessage');
                 }
 
-                $('#templateMode').empty();
-                $('#templateMode').append(ich.TemplateTextMode());
-            }
+                function overlay_modeText_Enter() {
+                    function setupBtn() {
+                        function overlay_sendToAPI_HideOverlay() {
+                            var btnSendToApiClose;
+                            btnSendToApiClose = document.getElementById('btnSendToApiClose');
+                            addClass(btnSendToApiClose, 'off');
+                            startGeolocating();
+                            hideOverlay('overlay_sendingToAPI');
+                        }
 
-            function setupBtnChooseMode() {
+                        function sendToApi() {
+                            function overlay_sendToAPI_SetUIForLoading() {
+                                var elementToChange, btnSendToApiClose;
+                                elementToChange = document.getElementById('currentProgress');
+                                btnSendToApiClose = document.getElementById('btnSendToApiClose');
+                                document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
+                                addClass(elementToChange, 'fa-spin');
+                                addClass(elementToChange, 'fa-circle-o-notch');
+                                addClass(btnSendToApiClose, 'off');
+                                removeClass(elementToChange, 'fa-check-square');
+                                removeClass(elementToChange, 'green-icon');
+                            }
+
+
+                            function createGeoJsonFromProps(txtIfPresent) {
+                                var baseData = {
+                                    "type": "Feature",
+                                    "geometry": {
+                                        "type": "Point",
+                                        "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
+                                    },
+                                    "properties": {
+                                        geoAccuracy: currentGeoCoords.accuracy
+                                    }
+                                };
+
+                                if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
+                                    baseData.properties.textNote = txtIfPresent;
+                                }
+                                return baseData;
+                            }
+                            var txtArea, request, data;
+                            txtArea = document.getElementById('txtNote').value;
+
+                            data = createGeoJsonFromProps(txtArea);
+
+                            // Do prepare the request to send to api...
+                            $.post(getApiUrl(), data, function (response) {
+                                if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
+                                    overlay_sendToAPI_LoadingDone();
+                                }
+                            });
+
+                            hideOverlay('overlay_leaveAMessage');
+                            showOverlay('overlay_sendingToAPI');
+                            overlay_sendToAPI_SetUIForLoading();
+                        }
+
+                        document.getElementById('btnSendToApi').onclick = sendToApi;
+                        document.getElementById('btnSendToApiClose').onclick = overlay_sendToAPI_HideOverlay;
+                        document.getElementById('btnCancel').onclick = overlay_EnterMsg_CloseModal;
+                    }
+
+                    $('#templateMode').empty();
+                    $('#templateMode').append(ich.TemplateTextMode());
+                    setupBtn();
+                }
 
                 document.getElementById('btnModeCancel').onclick = overlay_EnterMsg_CloseModal;
                 document.getElementById('btnModeFile').onclick = overlay_modeText_Enter;
