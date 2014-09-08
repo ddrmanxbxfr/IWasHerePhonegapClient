@@ -117,3 +117,23 @@ function setupBtnMarkTerritory() {
     btnSendToApi.onclick = sendToApi;
     btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
 }
+
+
+function setupMarkTerritoryView() {
+    "use strict";
+    forceCloseSideNav();
+    $('#main-content').empty();
+    $('#main-content').append(ich.TemplateMarkTerritory());
+    templateLoaded = "TemplateMarkTerritory";
+    setupBtnMarkTerritory();
+    updateUiGeoConfirmation(false);
+}
+
+function parseGeoResultsMarkTerritory() {
+    "use strict";
+    if (verifierSiAccuracyEstOk(position)) {
+        updateUiGeoConfirmation(true);
+    } else {
+        updateUiGeoConfirmation(false);
+    }
+}
