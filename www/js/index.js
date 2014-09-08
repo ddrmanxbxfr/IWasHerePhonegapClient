@@ -62,6 +62,7 @@ function SendToApi() {
 
     hideOverlay('overlay_leaveAMessage');
     showOverlay('overlay_sendingToAPI');
+    document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
 }
 
 
