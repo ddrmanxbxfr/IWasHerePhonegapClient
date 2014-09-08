@@ -40,8 +40,41 @@ function setupBtnMarkTerritory() {
     }
 
     function modalMarkTerritory() {
+        /* fonction pour init le choose mode... */
+
+
+        function setupChooseMode() {
+            function overlay_modeText_Enter() {
+                function setupBtn() {
+                        //btnSendToApi = document.getElementById('btnSendToApi');
+                    //btnSendToApiClose = document.getElementById('btnSendToApiClose');
+                    //btnCancel = document.getElementById('btnCancel');
+                        //btnSendToApi.onclick = sendToApi;
+    //btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
+    //btnCancel.onclick = overlay_EnterMsg_CloseModal;
+                }
+
+                 $('#templateMode').empty();
+                 $('#templateMode').append(ich.TemplateTextMode());
+            }
+
+            function setupBtnChooseMode() {
+
+                document.getElementById('btnModeCancel').onclick = overlay_EnterMsg_CloseModal;
+                document.getElementById('btnModeFile').onclick = overlay_modeText_Enter;
+                document.getElementById('btnModeNote').onclick = overlay_modeText_Enter;
+                document.getElementById('btnModePicture').onclick = overlay_modeText_Enter;
+            }
+            $('#templateMode').empty();
+            $('#templateMode').append(ich.TemplateChooseMode());
+            setupBtnChooseMode();
+
+        }
+
+
         if (isUserGeoLocated && currentGeoCoords !== undefined) {
             stopGeolocating();
+            setupChooseMode();
             showOverlay('overlay_leaveAMessage');
         }
     }
@@ -108,25 +141,9 @@ function setupBtnMarkTerritory() {
         hideOverlay('overlay_leaveAMessage');
     }
 
-    function overlay_modeText_Enter() {
-        addClass(document.getElementById('chooseMode'), 'off');
-        removeClass(document.getElementById('textMode'), 'off');
-    }
-
-
-    var btnMarkYourTerritory, btnSendToApi, btnSendToApiClose, btnCancel, btnModeCancel, btnModeFile, btnModeNote, btnModePicture;
+    var btnMarkYourTerritory;
     btnMarkYourTerritory = document.getElementById('roundBtn');
-    btnSendToApi = document.getElementById('btnSendToApi');
-    btnSendToApiClose = document.getElementById('btnSendToApiClose');
-    btnCancel = document.getElementById('btnCancel');
     btnMarkYourTerritory.onclick = modalMarkTerritory;
-    btnSendToApi.onclick = sendToApi;
-    btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
-    btnCancel.onclick = overlay_EnterMsg_CloseModal;
-    btnModeCancel.onclick = overlay_EnterMsg_CloseModal;
-    btnModeFile.onclick = overlay_modeText_Enter;
-    btnModeNote.onclick = overlay_modeText_Enter;
-    btnModePicture.onclick = overlay_modeText_Enter;
 }
 
 
