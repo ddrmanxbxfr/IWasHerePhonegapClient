@@ -1,14 +1,7 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
 stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk*/
 
-function overlay_sendToAPI_HideOverlay() {
-    "use strict";
-    var btnSendToApiClose;
-    btnSendToApiClose = document.getElementById('btnSendToApiClose');
-    addClass(btnSendToApiClose, 'off');
-    startGeolocating();
-    hideOverlay('overlay_sendingToAPI');
-}
+
 
 function overlay_sendToAPI_LoadingDone() {
     "use strict";
@@ -36,43 +29,6 @@ function overlay_sendToAPI_SetUIForLoading() {
     addClass(btnSendToApiClose, 'off');
     removeClass(elementToChange, 'fa-check-square');
     removeClass(elementToChange, 'green-icon');
-}
-
-function sendToApi() {
-    "use strict";
-
-    function createGeoJsonFromProps(txtIfPresent) {
-        var baseData = {
-            "type": "Feature",
-            "geometry": {
-                "type": "Point",
-                "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
-            },
-            "properties": {
-                geoAccuracy: currentGeoCoords.accuracy
-            }
-        };
-
-        if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
-            baseData.properties.textNote = txtIfPresent;
-        }
-        return baseData;
-    }
-    var txtArea, request, data;
-    txtArea = document.getElementById('txtNote').textContent;
-
-    data = createGeoJsonFromProps(txtArea);
-
-    // Do prepare the request to send to api...
-    $.post('http://192.168.2.26:4711/api/iwashere', data, function (response) {
-        if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
-            overlay_sendToAPI_LoadingDone();
-        }
-    });
-
-    hideOverlay('overlay_leaveAMessage');
-    showOverlay('overlay_sendingToAPI');
-    overlay_sendToAPI_SetUIForLoading();
 }
 
 function updateUiGeoConfirmation(isGeoReady) {
@@ -107,6 +63,51 @@ function setupBtnMarkTerritory() {
         }
     }
 
+    function overlay_sendToAPI_HideOverlay() {
+        var btnSendToApiClose;
+        btnSendToApiClose = document.getElementById('btnSendToApiClose');
+        addClass(btnSendToApiClose, 'off');
+        startGeolocating();
+        hideOverlay('overlay_sendingToAPI');
+    }
+
+
+    function sendToApi() {
+        function createGeoJsonFromProps(txtIfPresent) {
+            var baseData = {
+                "type": "Feature",
+                "geometry": {
+                    "type": "Point",
+                    "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
+                },
+                "properties": {
+                    geoAccuracy: currentGeoCoords.accuracy
+                }
+            };
+
+            if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
+                baseData.properties.textNote = txtIfPresent;
+            }
+            return baseData;
+        }
+        var txtArea, request, data;
+        txtArea = document.getElementById('txtNote').textContent;
+
+        data = createGeoJsonFromProps(txtArea);
+
+        // Do prepare the request to send to api...
+        $.post('http://192.168.2.26:4711/api/iwashere', data, function (response) {
+            if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
+                overlay_sendToAPI_LoadingDone();
+            }
+        });
+
+        hideOverlay('overlay_leaveAMessage');
+        showOverlay('overlay_sendingToAPI');
+        overlay_sendToAPI_SetUIForLoading();
+    }
+
+
     var btnMarkYourTerritory, btnSendToApi, btnSendToApiClose;
     btnMarkYourTerritory = document.getElementById('roundBtn');
     btnSendToApi = document.getElementById('btnSendToApi');
@@ -120,6 +121,12 @@ function setupBtnMarkTerritory() {
 function setupMarkTerritoryView() {
     "use strict";
     forceCloseSideNav();
+
+    // Must start geo if it's not running.....
+    if (watchGeoID === undefined || watchGeoID === null) {
+        startGeolocating();
+    }
+
     $('#main-content').empty();
     $('#main-content').append(ich.TemplateMarkTerritory());
     templateLoaded = "TemplateMarkTerritory";
