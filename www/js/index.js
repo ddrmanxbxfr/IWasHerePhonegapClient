@@ -1,6 +1,12 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
 stopGeolocating, currentGeoCoords,$, hideOverlay, ich, setupBtnMarkTerritory, updateUiGeoConfirmation*/
 
+function forceCloseSideNav() {
+    if (document.body.classList.contains('left-nav')) {
+        document.body.classList.remove('left-nav');
+    }
+}
+
 function animateSideMenu() {
     "use strict";
     if (document.body.classList.contains('left-nav')) {

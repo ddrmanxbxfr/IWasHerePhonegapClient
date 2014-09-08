@@ -121,6 +121,7 @@ function setupBtnMarkTerritory() {
 
 function setupMarkTerritoryView() {
     "use strict";
+    forceCloseSideNav();
     $('#main-content').empty();
     $('#main-content').append(ich.TemplateMarkTerritory());
     setupBtnMarkTerritory();
