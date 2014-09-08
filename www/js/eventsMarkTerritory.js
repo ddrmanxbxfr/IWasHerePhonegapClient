@@ -117,3 +117,12 @@ function setupBtnMarkTerritory() {
     btnSendToApi.onclick = sendToApi;
     btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
 }
+
+
+function setupMarkTerritoryView() {
+    "use strict";
+    $('#main-content').empty();
+    $('#main-content').append(ich.TemplateMarkTerritory());
+    setupBtnMarkTerritory();
+    updateUiGeoConfirmation(false);
+}

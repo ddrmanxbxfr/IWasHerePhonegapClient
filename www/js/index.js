@@ -12,9 +12,13 @@ function animateSideMenu() {
 
 function setupSideMenuBtn() {
     "use strict";
-    var slideMenuButton;
+    var slideMenuButton, sidenavBtnMarkTerritory, sidenavBtnSeeNearMarks;
     slideMenuButton = document.getElementById('slide-menu-button');
+    sidenavBtnSeeNearMarks = document.getElementById('side-navBtnSeeNearMarks');
+    sidenavBtnMarkTerritory = document.getElementById('side-navBtnMarkTerritory');
     slideMenuButton.onclick = animateSideMenu;
+    sidenavBtnMarkTerritory.onclick = setupMarkTerritoryView;
+    sidenavBtnSeeNearMarks.onclick = setupNearMarksView();
 }
 
 /* Stuff happends when app starts... */
@@ -22,9 +26,6 @@ document.addEventListener("deviceready", startGeolocating, false);
 
 window.onload = function () {
     "use strict";
-    var template = ich.TemplateMarkTerritory();
-    $('#main-content').append(template);
     setupSideMenuBtn();
-    setupBtnMarkTerritory();
-    updateUiGeoConfirmation(false);
+    setupMarkTerritoryView();
 };
