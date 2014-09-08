@@ -43,6 +43,19 @@ function overlay_sendToAPI_LoadingDone() {
     document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
 }
 
+function overlay_sendToAPI_SetUIForLoading() {
+    "use strict";
+    var elementToChange, btnSendToApiClose;
+    elementToChange = document.getElementById('currentProgress');
+    btnSendToApiClose = document.getElementById('btnSendToApiClose');
+    document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
+    addClass(elementToChange, 'fa-spin');
+    addClass(elementToChange, 'fa-circle-o-notch');
+    addClass(btnSendToApiClose, 'off');
+    removeClass(elementToChange, 'fa-check-square');
+    removeClass(elementToChange, 'green-icon');
+}
+
 function sendToApi() {
     "use strict";
 
@@ -77,7 +90,7 @@ function sendToApi() {
 
     hideOverlay('overlay_leaveAMessage');
     showOverlay('overlay_sendingToAPI');
-    document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
+    overlay_sendToAPI_SetUIForLoading();
 }
 
 
