@@ -3,33 +3,7 @@ stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, fo
 
 
 
-function overlay_sendToAPI_LoadingDone() {
-    "use strict";
-    var elementToChange, btnSendToApiClose;
-    elementToChange = document.getElementById('currentProgress');
-    btnSendToApiClose = document.getElementById('btnSendToApiClose');
-    // List of class to swap fa-circle-o-notch fa-spin
-    removeClass(elementToChange, 'fa-spin');
-    removeClass(elementToChange, 'fa-circle-o-notch');
-    removeClass(btnSendToApiClose, 'off');
-    addClass(elementToChange, 'fa-check-square');
-    addClass(elementToChange, 'green-icon');
 
-    document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
-}
-
-function overlay_sendToAPI_SetUIForLoading() {
-    "use strict";
-    var elementToChange, btnSendToApiClose;
-    elementToChange = document.getElementById('currentProgress');
-    btnSendToApiClose = document.getElementById('btnSendToApiClose');
-    document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
-    addClass(elementToChange, 'fa-spin');
-    addClass(elementToChange, 'fa-circle-o-notch');
-    addClass(btnSendToApiClose, 'off');
-    removeClass(elementToChange, 'fa-check-square');
-    removeClass(elementToChange, 'green-icon');
-}
 
 function updateUiGeoConfirmation(isGeoReady) {
     "use strict";
@@ -55,6 +29,32 @@ function updateUiGeoConfirmation(isGeoReady) {
 
 function setupBtnMarkTerritory() {
     "use strict";
+
+    function overlay_sendToAPI_LoadingDone() {
+        var elementToChange, btnSendToApiClose;
+        elementToChange = document.getElementById('currentProgress');
+        btnSendToApiClose = document.getElementById('btnSendToApiClose');
+        // List of class to swap fa-circle-o-notch fa-spin
+        removeClass(elementToChange, 'fa-spin');
+        removeClass(elementToChange, 'fa-circle-o-notch');
+        removeClass(btnSendToApiClose, 'off');
+        addClass(elementToChange, 'fa-check-square');
+        addClass(elementToChange, 'green-icon');
+
+        document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
+    }
+
+    function overlay_sendToAPI_SetUIForLoading() {
+        var elementToChange, btnSendToApiClose;
+        elementToChange = document.getElementById('currentProgress');
+        btnSendToApiClose = document.getElementById('btnSendToApiClose');
+        document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
+        addClass(elementToChange, 'fa-spin');
+        addClass(elementToChange, 'fa-circle-o-notch');
+        addClass(btnSendToApiClose, 'off');
+        removeClass(elementToChange, 'fa-check-square');
+        removeClass(elementToChange, 'green-icon');
+    }
 
     function modalMarkTerritory() {
         if (isUserGeoLocated && currentGeoCoords !== undefined) {
