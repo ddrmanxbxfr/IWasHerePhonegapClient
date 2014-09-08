@@ -46,7 +46,7 @@ function sendToApi() {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [currentGeoCoords.lat, currentGeoCoords.lng]
+                "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
             },
             "properties": {
                 geoAccuracy: currentGeoCoords.accuracy
