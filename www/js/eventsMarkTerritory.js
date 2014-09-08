@@ -52,6 +52,20 @@ function setupBtnMarkTerritory() {
                     modalMarkTerritory();
                 }
 
+                function overlay_modePicture_Enter() {
+                    function onPhotoDataSuccess() {
+
+                    }
+
+                    function onFail() {
+
+                    }
+
+                    navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+                        quality: 50
+                    });
+                }
+
                 function overlay_modeText_Enter() {
                     function setupBtn() {
                         function overlay_sendToAPI_HideOverlay() {
@@ -121,7 +135,7 @@ function setupBtnMarkTerritory() {
                 document.getElementById('btnModeCancel').onclick = overlay_EnterMsg_CloseModal;
                 document.getElementById('btnModeFile').onclick = overlay_modeText_Enter;
                 document.getElementById('btnModeNote').onclick = overlay_modeText_Enter;
-                document.getElementById('btnModePicture').onclick = overlay_modeText_Enter;
+                document.getElementById('btnModePicture').onclick = overlay_modePicture_Enter;
             }
             $('#templateMode').empty();
             $('#templateMode').append(ich.TemplateChooseMode());
