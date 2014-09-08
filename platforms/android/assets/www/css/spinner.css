@@ -1,6 +1,13 @@
 .spinner {
+    margin: auto;
+    height: 50%;
+    width: 50%;
+
+}
+
+/*.spinner {
     height: 20%;
-    /* width needs to be double the height */
+    // width needs to be double the height
     width: 40%;
     border: 3px solid #1E8CE2;
     border-bottom: 0;
@@ -19,4 +26,4 @@
     100% {
         -webkit-transform: rotate(360deg);
     }
-}
+}*/

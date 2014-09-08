@@ -9,6 +9,7 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <link rel="stylesheet" href="css/topcoat-mobile-light.css" />
     <link rel="stylesheet" href="css/topcoat-overlay.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/spinner.css" />
     <link rel="stylesheet" href="css/index.css" />
     <title>I was here</title>
@@ -49,15 +50,6 @@
             <div class="topcoat-overlay-bg"></div>
             <aside class="topcoat-overlay center">
                 <h3 class="topcoat-overlay__title">Hold on dude we're locating you !</h3>
-                <p>
-                    <div id='spinner' class='topcoat-spinner'></div>
-                    <div class='topcoat-progress-bar centerize'>
-                        <span id="progress_bar" class='progress' style='width:10%'></span>
-                    </div>
-                    <div class="topcoat-overlay-buttons">
-                        <button role="button" class="topcoat-button--cta">Annuler</button>
-                    </div>
-                </p>
             </aside>
         </div>
 
@@ -77,7 +69,7 @@
             <div class="topcoat-overlay-bg"></div>
             <aside class="topcoat-overlay center">
                 <h3 class="topcoat-overlay__title">Please wait while our dog chews your infos.</h3>
-                <div class="spinner"></div>
+                <i class="fa fa-circle-o-notch fa-spin" id="currentProgress"></i>
             </aside>
         </div>
 

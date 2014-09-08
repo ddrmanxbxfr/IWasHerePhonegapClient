@@ -42,10 +42,16 @@
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/spec \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/spec.html \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/font-awesome.min.css \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/index.css \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/spinner.css \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/topcoat-mobile-light.css \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/css/topcoat-overlay.css \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/fontawesome-webfont.eot \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/fontawesome-webfont.svg \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/fontawesome-webfont.ttf \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/fontawesome-webfont.woff \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/FontAwesome.otf \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/SourceCodePro-Black.otf \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/SourceCodePro-Bold.otf \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/font/SourceCodePro-ExtraLight.otf \

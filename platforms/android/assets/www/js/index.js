@@ -1,6 +1,16 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
 stopGeolocating, currentGeoCoords*/
 
+function overlay_sendToAPI_LoadingDone() {
+    "use strict";
+    var elementToChange = document.getElementById('currentProgress');
+    // List of class to swap spinner fa fa-spinner fa-spin
+    if (elementToChange.classList.contains('spinner')) {
+        elementToChange.classList.remove('spinner');
+    }
+
+}
+
 function SendToApi() {
     "use strict";
 

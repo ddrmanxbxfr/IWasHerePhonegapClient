@@ -1,6 +1,27 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
 stopGeolocating, currentGeoCoords*/
 
+function overlay_sendToAPI_LoadingDone() {
+    "use strict";
+    var elementToChange = document.getElementById('currentProgress');
+    // List of class to swap fa-circle-o-notch fa-spin
+    if (elementToChange.classList.contains('fa-spin')) {
+        elementToChange.classList.remove('fa-spin');
+    }
+
+    if (elementToChange.classList.contains('fa-circle-o-notch')) {
+        elementToChange.classList.remove('fa-circle-o-notch');
+    }
+
+    if (elementToChange.classList.contains('fa-check-square') === false) {
+        elementToChange.classList.add('fa-check-square');
+    }
+
+    if (elementToChange.classList.contains('green-icon') === false) {
+        elementToChange.classList.add('green-icon');
+    }
+}
+
 function SendToApi() {
     "use strict";
 
@@ -31,7 +52,9 @@ function SendToApi() {
 
     // Do prepare the request to send to api...
     $.post('http://192.168.2.26:4711/api/iwashere', data, function (response) {
-        console.log('we sent the data to api...');
+        if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
+            overlay_sendToAPI_LoadingDone();
+        }
     });
 
     hideOverlay('overlay_leaveAMessage');
