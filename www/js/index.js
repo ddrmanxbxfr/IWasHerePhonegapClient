@@ -1,5 +1,10 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords*/
+stopGeolocating, currentGeoCoords,$, hideOverlay*/
+
+
+function overlay_sendToAPI_HideOverlay() {
+    "use strict";
+}
 
 function overlay_sendToAPI_LoadingDone() {
     "use strict";
@@ -33,10 +38,7 @@ function SendToApi() {
             "type": "Feature",
             "geometry": {
                 "type": "Point",
-                "coordinates": [
-           currentGeoCoords.lat,
-           currentGeoCoords.lng
-       ]
+                "coordinates": [currentGeoCoords.lat, currentGeoCoords.lng]
             },
             "properties": {
                 geoAccuracy: currentGeoCoords.accuracy
@@ -76,10 +78,11 @@ function ModalMarkTerritory() {
 
 function configurerBtnEvents() {
     "use strict";
-    var slideMenuButton, btnMarkYourTerritory, btnSendToApi;
+    var slideMenuButton, btnMarkYourTerritory, btnSendToApi, btnSendToApiClose;
     slideMenuButton = document.getElementById('slide-menu-button');
     btnMarkYourTerritory = document.getElementById('roundBtn');
     btnSendToApi = document.getElementById('btnSendToApi');
+    btnSendToApiClose = document.getElementById('btnSendToApiClose');
     slideMenuButton.onclick = function (e) {
         if (document.body.classList.contains('left-nav')) {
             document.body.classList.remove('left-nav');
@@ -90,6 +93,7 @@ function configurerBtnEvents() {
 
     btnMarkYourTerritory.onclick = ModalMarkTerritory;
     btnSendToApi.onclick = SendToApi;
+    btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
 }
 
 function updateUiGeoConfirmation(isGeoReady) {
