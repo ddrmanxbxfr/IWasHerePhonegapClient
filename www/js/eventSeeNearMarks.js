@@ -47,12 +47,11 @@ function parseApiResults(data) {
     }
 
     list = ich.TemplateShowNearMarks_ListItem();
-
     len = listItems.length;
 
     for (iCpt =0; iCpt< len; iCpt = iCpt + 1) {
         list.append(listItems[iCpt]);
     }
-
+    $('#listNearMarks').empty();
     $('#listNearMarks').append(list);
 }
