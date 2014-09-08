@@ -1,9 +1,11 @@
-/*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating */
+/*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
+stopGeolocating, currentGeoCoords*/
 
 
 function btnModalMarkTerritory() {
     "use strict";
-    if (isUserGeoLocated) {
+    if (isUserGeoLocated && currentGeoCoords !== undefined) {
+        stopGeolocating();
         showOverlay('overlay_leaveAMessage');
     }
 }
