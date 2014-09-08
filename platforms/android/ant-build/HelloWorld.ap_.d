@@ -103,9 +103,12 @@
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/img/search_light.svg \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/img/spinner.png \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/img/spinner2x.png \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/eventsMarkTerritory.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/geolocalisation.js \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/ICanHaz.min.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/index.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/overlay.js \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/ui_operations.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/zepto.min.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res/icon \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res/screen \
