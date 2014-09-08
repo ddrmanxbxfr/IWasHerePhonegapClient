@@ -18,7 +18,7 @@ function setupSideMenuBtn() {
     sidenavBtnMarkTerritory = document.getElementById('side-navBtnMarkTerritory');
     slideMenuButton.onclick = animateSideMenu;
     sidenavBtnMarkTerritory.onclick = setupMarkTerritoryView;
-    sidenavBtnSeeNearMarks.onclick = setupNearMarksView();
+    sidenavBtnSeeNearMarks.onclick = setupNearMarksView;
 }
 
 /* Stuff happends when app starts... */
