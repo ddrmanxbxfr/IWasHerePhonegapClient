@@ -3,7 +3,8 @@ stopGeolocating, currentGeoCoords*/
 
 function overlay_sendToAPI_LoadingDone() {
     "use strict";
-    var elementToChange = document.getElementById('currentProgress');
+    var elementToChange;
+    elementToChange = document.getElementById('currentProgress');
     // List of class to swap fa-circle-o-notch fa-spin
     if (elementToChange.classList.contains('fa-spin')) {
         elementToChange.classList.remove('fa-spin');
@@ -20,6 +21,8 @@ function overlay_sendToAPI_LoadingDone() {
     if (elementToChange.classList.contains('green-icon') === false) {
         elementToChange.classList.add('green-icon');
     }
+
+    document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
 }
 
 function SendToApi() {

@@ -1,8 +1,9 @@
-.spinner {
-    margin: auto;
-    height: 50%;
-    width: 50%;
+#currentProgress {
+ font-size: 1000%;
+}
 
+.green-icon {
+    color: #46E85B;
 }
 
 /*.spinner {
