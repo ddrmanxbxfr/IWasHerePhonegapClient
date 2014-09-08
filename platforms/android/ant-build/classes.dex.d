@@ -6,6 +6,13 @@
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/phonegap/helloworld/R$string.class \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/phonegap/helloworld/R$xml.class \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/phonegap/helloworld/R.class \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/zeapes/iwashere/BuildConfig.class \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/zeapes/iwashere/HelloWorld.class \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/zeapes/iwashere/R$attr.class \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/zeapes/iwashere/R$drawable.class \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/zeapes/iwashere/R$string.class \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/zeapes/iwashere/R$xml.class \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/com/zeapes/iwashere/R.class \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/org/apache/cordova/camera/CameraLauncher.class \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/org/apache/cordova/camera/ExifHelper.class \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-build/classes/org/apache/cordova/camera/FileHelper.class \

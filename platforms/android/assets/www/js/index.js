@@ -23,6 +23,10 @@ function setupActiveButton(buttonNameActive, buttonNameOld) {
     addClass(document.getElementById(buttonNameActive), 'is-active');
 }
 
+function getApiUrl() {
+    return "http://vps84512.ovh.net:4712/api/iwashere/";
+}
+
 function setupSideMenuBtn() {
     "use strict";
     var slideMenuButton, sidenavBtnMarkTerritory, sidenavBtnSeeNearMarks;

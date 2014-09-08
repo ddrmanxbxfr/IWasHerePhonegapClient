@@ -1,4 +1,4 @@
-/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-gen/com/phonegap/helloworld/R.java \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/ant-gen/com/zeapes/iwashere/R.java \
  : /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/res/drawable/icon.png \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/res/drawable-hdpi/icon.png \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/res/drawable-land-hdpi/screen.png \

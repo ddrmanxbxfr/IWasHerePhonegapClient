@@ -92,7 +92,7 @@ function setupBtnMarkTerritory() {
         data = createGeoJsonFromProps(txtArea);
 
         // Do prepare the request to send to api...
-        $.post('http://192.168.2.26:4711/api/iwashere', data, function (response) {
+        $.post(getApiUrl(), data, function (response) {
             if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
                 overlay_sendToAPI_LoadingDone();
             }

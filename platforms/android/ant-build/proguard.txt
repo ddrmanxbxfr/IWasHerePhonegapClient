@@ -1,3 +1,3 @@
 # view AndroidManifest.xml #generated:8
--keep class com.phonegap.helloworld.HelloWorld { <init>(...); }
+-keep class com.zeapes.iwashere.HelloWorld { <init>(...); }
 

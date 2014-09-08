@@ -25,7 +25,7 @@ function fetchNearMarksFromAPI() {
     "use strict";
 
     function formatUrl(toleratedRadius) {
-        return 'http://192.168.2.26:4711/api/iwashere/' + 100 + '/' + currentGeoCoords.lat + '/' + currentGeoCoords.lng;
+        return getApiUrl() + 100 + '/' + currentGeoCoords.lat + '/' + currentGeoCoords.lng;
     }
 
     stopGeolocating();
@@ -39,19 +39,46 @@ function fetchNearMarksFromAPI() {
 
 function parseApiResults(data) {
     "use strict";
-    var list, listItems, len, iCpt;
+    var list, listStatistics, listItems, len, iCpt;
     len = data.features.length;
     listItems = [];
-    for (iCpt =0; iCpt< len; iCpt = iCpt + 1) {
-        listItems.push(ich.TemplateShowNearMarks_Item({name:data.features[iCpt].properties.geoAccuracy}));
+    for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
+        if (data.features[iCpt].properties.textNote !== undefined) {
+            listItems.push(ich.TemplateShowNearMarks_Item({
+                name: data.features[iCpt].properties.textNote
+            }));
+        } else {
+            listItems.push(ich.TemplateShowNearMarks_Item({
+                name: data.features[iCpt].properties.geoAccuracy
+            }));
+        }
     }
 
     list = ich.TemplateShowNearMarks_ListItem();
+    listStatistics = ich.TemplateShowNearMarks_ListItem();
+
     len = listItems.length;
 
-    for (iCpt =0; iCpt< len; iCpt = iCpt + 1) {
+    for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
         list.append(listItems[iCpt]);
     }
+
+    listStatistics.append(ich.TemplateShowNearMarks_Item({
+        name: "Number of contributions around : " + data.properties.nbSansContributions
+    }));
+
     $('#listNearMarks').empty();
+
+    $('#listNearMarks').append(ich.TemplateShowNearMarks_HeaderList({
+        title: "Statistics"
+    }));
+
+    $('#listNearMarks').append(listStatistics);
+
+    $('#listNearMarks').append(ich.TemplateShowNearMarks_HeaderList({
+        title: "Messages left around here"
+    }));
+
     $('#listNearMarks').append(list);
+
 }
