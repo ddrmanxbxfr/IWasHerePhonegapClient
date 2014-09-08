@@ -87,7 +87,7 @@ function setupBtnMarkTerritory() {
             return baseData;
         }
         var txtArea, request, data;
-        txtArea = document.getElementById('txtNote').textContent;
+        txtArea = document.getElementById('txtNote').value;
 
         data = createGeoJsonFromProps(txtArea);
 

@@ -1,5 +1,5 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk*/
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk, setupActiveButton*/
 
 function updateUiGeoConfirmation(isGeoReady) {
     "use strict";
@@ -87,7 +87,7 @@ function setupBtnMarkTerritory() {
             return baseData;
         }
         var txtArea, request, data;
-        txtArea = document.getElementById('txtNote').textContent;
+        txtArea = document.getElementById('txtNote').value;
 
         data = createGeoJsonFromProps(txtArea);
 
@@ -103,14 +103,21 @@ function setupBtnMarkTerritory() {
         overlay_sendToAPI_SetUIForLoading();
     }
 
+    function overlay_EnterMsg_CloseModal() {
+        startGeolocating();
+        hideOverlay('overlay_leaveAMessage');
+    }
 
-    var btnMarkYourTerritory, btnSendToApi, btnSendToApiClose;
+
+    var btnMarkYourTerritory, btnSendToApi, btnSendToApiClose, btnCancel;
     btnMarkYourTerritory = document.getElementById('roundBtn');
     btnSendToApi = document.getElementById('btnSendToApi');
     btnSendToApiClose = document.getElementById('btnSendToApiClose');
+    btnCancel = document.getElementById('btnCancel');
     btnMarkYourTerritory.onclick = modalMarkTerritory;
     btnSendToApi.onclick = sendToApi;
     btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
+    btnCancel.onclick = overlay_EnterMsg_CloseModal;
 }
 
 
