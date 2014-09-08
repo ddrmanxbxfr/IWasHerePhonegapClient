@@ -51,7 +51,7 @@ function parseApiResults(data) {
     len = listItems.length;
 
     for (iCpt =0; iCpt< len; iCpt = iCpt + 1) {
-        list.appendChild(listItems[iCpt]);
+        list.append(listItems[iCpt]);
     }
 
     $('#listNearMarks').append(list);
