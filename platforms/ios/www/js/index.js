@@ -1,53 +1,48 @@
-/*global console */
+/*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich, setupBtnMarkTerritory, updateUiGeoConfirmation*/
+var templateLoaded;
 
-function demarerCamera() {
-    "use strict";
-    // Grab elements, create settings, etc.
-    var canvas = document.getElementById("canvas"),
-        context = canvas.getContext("2d"),
-        video = document.getElementById("video"),
-        videoObj = {
-            "video": true
-        },
-        errBack = function (error) {
-            console.log("Video capture error: ", error.code);
-        };
-
-    // Put video listeners into place
-    if (navigator.getUserMedia) { // Standard
-        navigator.getUserMedia(videoObj, function (stream) {
-            video.src = stream;
-            video.play();
-        }, errBack);
-    } else if (navigator.webkitGetUserMedia) { // WebKit-prefixed
-        navigator.webkitGetUserMedia(videoObj, function (stream) {
-            video.src = window.webkitURL.createObjectURL(stream);
-            video.play();
-        }, errBack);
-    } else if (navigator.mozGetUserMedia) { // Firefox-prefixed
-        navigator.mozGetUserMedia(videoObj, function (stream) {
-            video.src = window.URL.createObjectURL(stream);
-            video.play();
-        }, errBack);
+function forceCloseSideNav() {
+    if (document.body.classList.contains('left-nav')) {
+        document.body.classList.remove('left-nav');
     }
 }
 
-function configurerBtnEvents() {
+function animateSideMenu() {
     "use strict";
-    var slideMenuButton = document.getElementById('slide-menu-button');
-    slideMenuButton.onclick = function (e) {
-        var cl = document.body.classList;
-        if (cl.contains('left-nav')) {
-            cl.remove('left-nav');
-        } else {
-            cl.add('left-nav');
-        }
-    };
+    if (document.body.classList.contains('left-nav')) {
+        document.body.classList.remove('left-nav');
+    } else {
+        document.body.classList.add('left-nav');
+    }
 }
+
+
+function setupActiveButton(buttonNameActive, buttonNameOld) {
+    removeClass(document.getElementById(buttonNameOld), 'is-active');
+    addClass(document.getElementById(buttonNameActive), 'is-active');
+}
+
+function getApiUrl() {
+    return "http://127.0.0.1:4711/api/iwashere/";
+}
+
+function setupSideMenuBtn() {
+    "use strict";
+    var slideMenuButton, sidenavBtnMarkTerritory, sidenavBtnSeeNearMarks;
+    slideMenuButton = document.getElementById('slide-menu-button');
+    sidenavBtnSeeNearMarks = document.getElementById('side-navBtnSeeNearMarks');
+    sidenavBtnMarkTerritory = document.getElementById('side-navBtnMarkTerritory');
+    slideMenuButton.onclick = animateSideMenu;
+    sidenavBtnMarkTerritory.onclick = setupMarkTerritoryView;
+    sidenavBtnSeeNearMarks.onclick = setupNearMarksView;
+}
+
+/* Stuff happends when app starts... */
+document.addEventListener("deviceready", startGeolocating, false);
 
 window.onload = function () {
     "use strict";
-    configurerBtnEvents();
-    navigator.camera.showPreview("preview");
-    //demarerCamera();
+    setupSideMenuBtn();
+    setupMarkTerritoryView();
 };

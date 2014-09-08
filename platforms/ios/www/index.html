@@ -8,6 +8,9 @@
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
     <link rel="stylesheet" href="css/topcoat-mobile-light.css" />
+    <link rel="stylesheet" href="css/topcoat-overlay.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/spinner.css" />
     <link rel="stylesheet" href="css/index.css" />
     <title>I was here</title>
 </head>
@@ -32,20 +35,91 @@
     <nav class="side-nav">
         <div class="topcoat-list__container side-nav__list__container">
             <ul class="topcoat-list side-nav__list">
-                <li class="topcoat-list__item side-nav__list__item is-active">
+                <li class="topcoat-list__item side-nav__list__item is-active" id="side-navBtnMarkTerritory">
                     <a href="#" class="side-nav__button">Mark your territory</a>
                 </li>
-                <li class="topcoat-list__item side-nav__list__item">
-                    <a href="#" class="side-nav__button">See the pictures</a>
+                <li class="topcoat-list__item side-nav__list__item" id="side-navBtnSeeNearMarks">
+                    <a href="#" class="side-nav__button">See messages left around here</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <div class="main-content">
-        <div id="preview"></div>
+    <div class="main-content" id="main-content">
+
     </div>
-    <script type="application/javascript" src="cordova.js"></script>
+    <script src="cordova.js"></script>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="js/ICanHaz.min.js"></script>
+    <script type="application/javascript" src="js/eventsMarkTerritory.js"></script>
+    <script type="application/javascript" src="js/eventSeeNearMarks.js"></script>
+    <script type="application/javascript" src="js/overlay.js"></script>
+    <script type="application/javascript" src="js/geolocalisation.js"></script>
+    <script type="application/javascript" src="js/ui_operations.js"></script>
     <script type="application/javascript" src="js/index.js"></script>
+
+    <!-- Templates pour ICanHaz.JS -->
+    <script id="TemplateMarkTerritory" type="text/html">
+         <div id="overlay_leaveAMessage" class="off">
+            <div class="topcoat-overlay-bg"></div>
+            <aside class="topcoat-overlay center">
+                <h3 class="topcoat-overlay__title">What do yo want to write down ?</h3>
+                <textarea class="topcoat-textarea center" placeholder="Enter a note" id="txtNote"></textarea>
+                <div class="topcoat-overlay-buttons">
+                    <button role="button" class="topcoat-button--cta" id="btnSendToApi">Send it !</button>
+                    <button role="button" class="topcoat-button--cta" id="btnCancel">Cancel</button>
+                </div>
+            </aside>
+        </div>
+
+        <div id="overlay_sendingToAPI" class="off">
+            <div class="topcoat-overlay-bg"></div>
+            <aside class="topcoat-overlay center">
+                <h3 class="topcoat-overlay__title" id="sendToApiTxtProgress"></h3>
+                <i class="fa fa-circle-o-notch fa-spin" id="currentProgress"></i>
+                <button role="button" class="topcoat-button--cta off" id="btnSendToApiClose">Close</button>
+            </aside>
+        </div>
+
+        <div class="center">
+            <p id="geolocationStatus"></p>
+        </div>
+
+        <div class="round-button">
+            <div class="round-button-circle round-button-circle-not-ready button-not-ready" id="roundBtn"><a href="#" class="round-button">Say I was here !</a>
+            </div>
+        </div>
+    </script>
+
+
+    <script id="TemplateShowNearMarks" type="text/html">
+         <div id="overlay_loadingDataAndGeoLocating">
+            <div class="topcoat-overlay-bg"></div>
+            <aside class="topcoat-overlay center">
+                <h3 class="topcoat-overlay__title" id="loadingModal">Hold on buddy we got to find you before !</h3>
+                <i class="fa fa-circle-o-notch fa-spin" id="currentProgress"></i>
+            </aside>
+        </div>
+
+
+        <div class="topcoat-list" id="listNearMarks">
+
+        </div>
+    </script>
+
+    <script id="TemplateShowNearMarks_HeaderList" type="text/html">
+        <h3 class="topcoat-list__header">{{ title }}</h3>
+    </script>
+
+    <script id="TemplateShowNearMarks_ListItem" type="text/html">
+        <ul class="topcoat-list__container">
+        </ul>
+    </script>
+
+    <script id="TemplateShowNearMarks_Item" type="text/html">
+        <li class="topcoat-list__item">
+            {{ name }}
+        </li>
+    </script>
 </body>
 
 </html>

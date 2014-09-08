@@ -1,0 +1,29 @@
+#currentProgress {
+    font-size: 1000%;
+    display: block;
+}
+.green-icon {
+    color: #46E85B;
+}
+/*.spinner {
+    height: 20%;
+    // width needs to be double the height
+    width: 40%;
+    border: 3px solid #1E8CE2;
+    border-bottom: 0;
+    border-radius: 100px 100px 0 0;
+    margin: auto;
+    -webkit-transform-origin: bottom center;
+    -webkit-animation: spinner .4s infinite linear;
+}
+@-webkit-keyframes spinner {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    50% {
+        -webkit-transform: rotate(180deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}*/

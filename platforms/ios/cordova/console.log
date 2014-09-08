@@ -43,3 +43,48 @@ You could find it at the following address https://developer.apple.com/icloud/do
 
 2014-09-06 19:37:57.757 HelloWorld[3887:70b] Resetting plugins due to page load.
 2014-09-06 19:37:57.977 HelloWorld[3887:70b] Finished load of: file:///Users/ddrmanxbxfr/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/195D0945-616B-4C5F-9F30-D43775ABF4CC/HelloWorld.app/www/index.html
+2014-09-08 03:40:06.618 I was here ![11809:70b] Multi-tasking -> Device: YES, App: YES
+2014-09-08 03:40:06.654 I was here ![11809:70b] Unlimited access to network resources
+2014-09-08 03:40:06.661 I was here ![11809:70b] Fix applied for database locations?: YES
+2014-09-08 03:40:06.663 I was here ![11809:70b] 
+
+Started backup to iCloud! Please be careful.
+Your application might rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines"
+You could find it at the following address https://developer.apple.com/icloud/documentation/data-storage/ .
+
+2014-09-08 03:40:07.524 I was here ![11809:70b] Resetting plugins due to page load.
+2014-09-08 03:40:07.766 I was here ![11809:70b] Finished load of: file:///Users/ddrmanxbxfr/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/DDEE49C5-6883-4819-B2DE-719CE9E1E076/I%20was%20here%20!.app/www/index.html
+2014-09-08 03:41:17.209 I was here ![12555:70b] Multi-tasking -> Device: YES, App: YES
+2014-09-08 03:41:17.221 I was here ![12555:70b] Unlimited access to network resources
+2014-09-08 03:41:17.225 I was here ![12555:70b] 
+
+Started backup to iCloud! Please be careful.
+Your application might rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines"
+You could find it at the following address https://developer.apple.com/icloud/documentation/data-storage/ .
+
+2014-09-08 03:41:17.451 I was here ![12555:70b] Resetting plugins due to page load.
+2014-09-08 03:41:17.589 I was here ![12555:70b] Finished load of: file:///Users/ddrmanxbxfr/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/DDEE49C5-6883-4819-B2DE-719CE9E1E076/I%20was%20here%20!.app/www/index.html
+2014-09-08 03:43:41.114 I was here ![13452:70b] Multi-tasking -> Device: YES, App: YES
+2014-09-08 03:43:41.156 I was here ![13452:70b] Unlimited access to network resources
+2014-09-08 03:43:41.166 I was here ![13452:70b] 
+
+Started backup to iCloud! Please be careful.
+Your application might rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines"
+You could find it at the following address https://developer.apple.com/icloud/documentation/data-storage/ .
+
+2014-09-08 03:43:41.547 I was here ![13452:70b] Resetting plugins due to page load.
+2014-09-08 03:43:41.783 I was here ![13452:70b] Finished load of: file:///Users/ddrmanxbxfr/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/DDEE49C5-6883-4819-B2DE-719CE9E1E076/I%20was%20here%20!.app/www/index.html
+2014-09-08 03:44:34.541 I was here ![14370:70b] Multi-tasking -> Device: YES, App: YES
+2014-09-08 03:44:34.554 I was here ![14370:70b] Unlimited access to network resources
+2014-09-08 03:44:34.560 I was here ![14370:70b] 
+
+Started backup to iCloud! Please be careful.
+Your application might rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines"
+You could find it at the following address https://developer.apple.com/icloud/documentation/data-storage/ .
+
+2014-09-08 03:44:34.832 I was here ![14370:70b] Resetting plugins due to page load.
+2014-09-08 03:44:35.028 I was here ![14370:70b] Finished load of: file:///Users/ddrmanxbxfr/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/DDEE49C5-6883-4819-B2DE-719CE9E1E076/I%20was%20here%20!.app/www/index.html
