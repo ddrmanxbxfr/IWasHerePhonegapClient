@@ -114,6 +114,10 @@ body.left-nav .main-content {
     background: #436117;
 }
 
+#txtNote {
+    width: 80%;
+}
+
 .round-button a {
     display: block;
     float: left;

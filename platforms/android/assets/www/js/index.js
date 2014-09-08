@@ -1,15 +1,23 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID */
 function configurerBtnEvents() {
     "use strict";
-    var slideMenuButton = document.getElementById('slide-menu-button');
+    var slideMenuButton, btnMarkYourTerritory;
+    slideMenuButton = document.getElementById('slide-menu-button');
+    btnMarkYourTerritory = document.getElementById('roundBtn');
     slideMenuButton.onclick = function (e) {
-        var cl = document.body.classList;
-        if (cl.contains('left-nav')) {
-            cl.remove('left-nav');
+        if (document.body.classList.contains('left-nav')) {
+            document.body.classList.remove('left-nav');
         } else {
-            cl.add('left-nav');
+            document.body.classList.add('left-nav');
         }
     };
+
+    btnMarkYourTerritory.onclick = function (e) {
+        "use strict";
+        if (isUserGeoLocated) {
+            showOverlay('overlay_leaveAMessage');
+        }
+    }
 }
 
 function preparerOnDeviceReady() {

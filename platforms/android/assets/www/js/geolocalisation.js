@@ -1,5 +1,6 @@
 /*global alert, updateUiGeoConfirmation*/
 var watchGeoID = null;
+var isUserGeoLocated = false;
 
 function verifierSiAccuracyEstOk(position) {
     "use strict";
@@ -15,8 +16,10 @@ function onSuccessGeoLoc(position) {
     "use strict";
     var element = document.getElementById('geolocation');
     if (verifierSiAccuracyEstOk(position)) {
+        isUserGeoLocated = true;
         updateUiGeoConfirmation(true);
     } else {
+        isUserGeoLocated = false;
         updateUiGeoConfirmation(false);
     }
 }
