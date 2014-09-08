@@ -45,7 +45,7 @@ function parseApiResults(data) {
     for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
         if (data.features[iCpt].properties.textNote !== undefined) {
             listItems.push(ich.TemplateShowNearMarks_Item({
-                name: data.features[iCpt].properties.tex
+                name: data.features[iCpt].properties.textNote
             }));
         } else {
             listItems.push(ich.TemplateShowNearMarks_Item({
