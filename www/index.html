@@ -67,7 +67,16 @@
                 <textarea class="topcoat-textarea center" placeholder="Enter a note" id="txtNote"></textarea>
                 <div class="topcoat-overlay-buttons">
                     <button role="button" class="topcoat-button--cta" id="btnSendToApi">Send it !</button>
+                    <button role="button" class="topcoat-button--cta" id="btnCancel">Cancel</button>
                 </div>
+            </aside>
+        </div>
+
+        <div id="overlay_sendingToAPI" class="off">
+            <div class="topcoat-overlay-bg"></div>
+            <aside class="topcoat-overlay center">
+                <h3 class="topcoat-overlay__title">Please wait while our dog chews your infos.</h3>
+                <div class="spinner"></div>
             </aside>
         </div>
 
@@ -81,6 +90,7 @@
         </div>
     </div>
     <script src="cordova.js"></script>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
     <script type="application/javascript" src="js/overlay.js"></script>
     <script type="application/javascript" src="js/geolocalisation.js"></script>
     <script type="application/javascript" src="js/index.js"></script>

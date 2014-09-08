@@ -99,6 +99,7 @@
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/geolocalisation.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/index.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/overlay.js \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/zepto.min.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res/icon \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res/screen \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res/icon/android \

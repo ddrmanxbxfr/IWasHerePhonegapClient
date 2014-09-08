@@ -1,8 +1,42 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
 stopGeolocating, currentGeoCoords*/
 
+function SendToApi() {
+    "use strict";
 
-function btnModalMarkTerritory() {
+    function createGeoJsonFromProps(txtIfPresent) {
+        var baseData = {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+           currentGeoCoords.lat,
+           currentGeoCoords.lng
+       ]
+            },
+            "properties": {
+                geoAccuracy: currentGeoCoords.accuracy
+            }
+        };
+
+        if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
+            baseData.properties.textNote = txtIfPresent;
+        }
+        return baseData;
+    }
+    var txtArea, request, data;
+    txtArea = document.getElementById('txtNote').textContent;
+
+    data = createGeoJsonFromProps(txtArea);
+
+    // Do prepare the request to send to api...
+    $.post('http://192.168.2.26:4711/api/iwashere', data, function (response) {
+        console.log('we sent the data to api...');
+    });
+}
+
+
+function ModalMarkTerritory() {
     "use strict";
     if (isUserGeoLocated && currentGeoCoords !== undefined) {
         stopGeolocating();
@@ -12,9 +46,10 @@ function btnModalMarkTerritory() {
 
 function configurerBtnEvents() {
     "use strict";
-    var slideMenuButton, btnMarkYourTerritory;
+    var slideMenuButton, btnMarkYourTerritory, btnSendToApi;
     slideMenuButton = document.getElementById('slide-menu-button');
     btnMarkYourTerritory = document.getElementById('roundBtn');
+    btnSendToApi = document.getElementById('btnSendToApi');
     slideMenuButton.onclick = function (e) {
         if (document.body.classList.contains('left-nav')) {
             document.body.classList.remove('left-nav');
@@ -23,7 +58,8 @@ function configurerBtnEvents() {
         }
     };
 
-    btnMarkYourTerritory.onclick = btnModalMarkTerritory;
+    btnMarkYourTerritory.onclick = ModalMarkTerritory;
+    btnSendToApi.onclick = SendToApi;
 }
 
 function updateUiGeoConfirmation(isGeoReady) {
