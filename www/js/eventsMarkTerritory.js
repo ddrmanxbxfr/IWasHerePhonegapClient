@@ -124,6 +124,16 @@ function setupMarkTerritoryView() {
     forceCloseSideNav();
     $('#main-content').empty();
     $('#main-content').append(ich.TemplateMarkTerritory());
+    templateLoaded = "TemplateMarkTerritory";
     setupBtnMarkTerritory();
     updateUiGeoConfirmation(false);
+}
+
+function parseGeoResultsMarkTerritory() {
+    "use strict";
+    if (verifierSiAccuracyEstOk(position)) {
+        updateUiGeoConfirmation(true);
+    } else {
+        updateUiGeoConfirmation(false);
+    }
 }

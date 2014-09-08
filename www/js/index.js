@@ -1,5 +1,6 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
 stopGeolocating, currentGeoCoords,$, hideOverlay, ich, setupBtnMarkTerritory, updateUiGeoConfirmation*/
+var templateLoaded;
 
 function forceCloseSideNav() {
     if (document.body.classList.contains('left-nav')) {

@@ -4,4 +4,5 @@ function setupNearMarksView() {
     forceCloseSideNav();
     $('#main-content').empty();
     $('#main-content').append(ich.TemplateShowNearMarks());
+    templateLoaded = "TemplateShowNearMarks";
 }
