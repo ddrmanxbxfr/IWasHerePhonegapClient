@@ -1,10 +1,6 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
 stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk*/
 
-
-
-
-
 function updateUiGeoConfirmation(isGeoReady) {
     "use strict";
     var docToUpdate, btnMark;
@@ -44,18 +40,6 @@ function setupBtnMarkTerritory() {
         document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
     }
 
-    function overlay_sendToAPI_SetUIForLoading() {
-        var elementToChange, btnSendToApiClose;
-        elementToChange = document.getElementById('currentProgress');
-        btnSendToApiClose = document.getElementById('btnSendToApiClose');
-        document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
-        addClass(elementToChange, 'fa-spin');
-        addClass(elementToChange, 'fa-circle-o-notch');
-        addClass(btnSendToApiClose, 'off');
-        removeClass(elementToChange, 'fa-check-square');
-        removeClass(elementToChange, 'green-icon');
-    }
-
     function modalMarkTerritory() {
         if (isUserGeoLocated && currentGeoCoords !== undefined) {
             stopGeolocating();
@@ -73,6 +57,19 @@ function setupBtnMarkTerritory() {
 
 
     function sendToApi() {
+        function overlay_sendToAPI_SetUIForLoading() {
+            var elementToChange, btnSendToApiClose;
+            elementToChange = document.getElementById('currentProgress');
+            btnSendToApiClose = document.getElementById('btnSendToApiClose');
+            document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
+            addClass(elementToChange, 'fa-spin');
+            addClass(elementToChange, 'fa-circle-o-notch');
+            addClass(btnSendToApiClose, 'off');
+            removeClass(elementToChange, 'fa-check-square');
+            removeClass(elementToChange, 'green-icon');
+        }
+
+
         function createGeoJsonFromProps(txtIfPresent) {
             var baseData = {
                 "type": "Feature",
