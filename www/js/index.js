@@ -149,6 +149,8 @@ document.addEventListener("deviceready", startGeolocating, false);
 
 window.onload = function () {
     "use strict";
+    var template = ich.TemplateMarkTerritory();
+    $('#main-content').append(template);
     configurerBtnEvents();
     updateUiGeoConfirmation(false);
 };
