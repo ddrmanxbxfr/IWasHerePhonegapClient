@@ -1,5 +1,6 @@
 {
     "jscodehints.detectedExclusions": [
-        "/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/www/js/geolocalisation.js"
+        "/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/www/js/geolocalisation.js",
+        "/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/www/spec/lib/jasmine-1.2.0/jasmine.js"
     ]
 }

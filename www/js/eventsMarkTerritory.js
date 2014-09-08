@@ -108,8 +108,13 @@ function setupBtnMarkTerritory() {
         hideOverlay('overlay_leaveAMessage');
     }
 
+    function overlay_modeText_Enter() {
+        addClass(document.getElementById('chooseMode'), 'off');
+        removeClass(document.getElementById('textMode'), 'off');
+    }
 
-    var btnMarkYourTerritory, btnSendToApi, btnSendToApiClose, btnCancel;
+
+    var btnMarkYourTerritory, btnSendToApi, btnSendToApiClose, btnCancel, btnModeCancel, btnModeFile, btnModeNote, btnModePicture;
     btnMarkYourTerritory = document.getElementById('roundBtn');
     btnSendToApi = document.getElementById('btnSendToApi');
     btnSendToApiClose = document.getElementById('btnSendToApiClose');
@@ -118,6 +123,10 @@ function setupBtnMarkTerritory() {
     btnSendToApi.onclick = sendToApi;
     btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
     btnCancel.onclick = overlay_EnterMsg_CloseModal;
+    btnModeCancel.onclick = overlay_EnterMsg_CloseModal;
+    btnModeFile.onclick = overlay_modeText_Enter;
+    btnModeNote.onclick = overlay_modeText_Enter;
+    btnModePicture.onclick = overlay_modeText_Enter;
 }
 
 
