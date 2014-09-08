@@ -1,4 +1,15 @@
-/*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID */
+/*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
+stopGeolocating, currentGeoCoords*/
+
+
+function btnModalMarkTerritory() {
+    "use strict";
+    if (isUserGeoLocated && currentGeoCoords !== undefined) {
+        stopGeolocating();
+        showOverlay('overlay_leaveAMessage');
+    }
+}
+
 function configurerBtnEvents() {
     "use strict";
     var slideMenuButton, btnMarkYourTerritory;
@@ -12,21 +23,7 @@ function configurerBtnEvents() {
         }
     };
 
-    btnMarkYourTerritory.onclick = function (e) {
-        "use strict";
-        if (isUserGeoLocated) {
-            showOverlay('overlay_leaveAMessage');
-        }
-    }
-}
-
-function preparerOnDeviceReady() {
-    "use strict";
-    var options = {
-        timeout: 30000,
-        enableHighAccuracy: true
-    };
-    watchGeoID = navigator.geolocation.watchPosition(onSuccessGeoLoc, onErrorGeoLoc, options);
+    btnMarkYourTerritory.onclick = btnModalMarkTerritory;
 }
 
 function updateUiGeoConfirmation(isGeoReady) {
@@ -67,7 +64,7 @@ function updateUiGeoConfirmation(isGeoReady) {
 
 
 /* Stuff happends when app starts... */
-document.addEventListener("deviceready", preparerOnDeviceReady, false);
+document.addEventListener("deviceready", startGeolocating, false);
 
 window.onload = function () {
     "use strict";
