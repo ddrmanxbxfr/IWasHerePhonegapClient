@@ -46,6 +46,13 @@ function parseApiResults(data) {
         listItems.push(ich.TemplateShowNearMarks_Item({name:data.features[iCpt].properties.geoAccuracy}));
     }
 
-    list = ich.TemplateShowNearMarks_ListItem({listItems: listItems});
+    list = ich.TemplateShowNearMarks_ListItem();
+
+    len = listItems.length;
+
+    for (iCpt =0; iCpt< len; iCpt = iCpt + 1) {
+        list.appendChild(listItems[iCpt]);
+    }
+
     $('#listNearMarks').append(list);
 }
