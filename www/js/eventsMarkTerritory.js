@@ -22,7 +22,6 @@ function updateUiGeoConfirmation(isGeoReady) {
     }
 }
 
-
 function setupBtnMarkTerritory() {
     "use strict";
 
@@ -118,6 +117,8 @@ function setupBtnMarkTerritory() {
 function setupMarkTerritoryView() {
     "use strict";
     forceCloseSideNav();
+
+    setupActiveButton('side-navBtnMarkTerritory', 'side-navBtnSeeNearMarks');
 
     // Must start geo if it's not running.....
     if (watchGeoID === undefined || watchGeoID === null) {

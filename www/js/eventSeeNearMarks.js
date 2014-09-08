@@ -6,7 +6,7 @@ function setupNearMarksView() {
     $('#main-content').empty();
     $('#main-content').append(ich.TemplateShowNearMarks());
     templateLoaded = "TemplateShowNearMarks";
-
+    setupActiveButton('side-navBtnSeeNearMarks', 'side-navBtnMarkTerritory');
     if (watchGeoID === undefined || watchGeoID === null) {
         startGeolocating();
     }

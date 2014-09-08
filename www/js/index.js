@@ -17,6 +17,12 @@ function animateSideMenu() {
     }
 }
 
+
+function setupActiveButton(buttonNameActive, buttonNameOld) {
+    removeClass(document.getElementById(buttonNameOld), 'is-active');
+    addClass(document.getElementById(buttonNameActive, 'is-active');
+}
+
 function setupSideMenuBtn() {
     "use strict";
     var slideMenuButton, sidenavBtnMarkTerritory, sidenavBtnSeeNearMarks;
