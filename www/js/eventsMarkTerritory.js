@@ -53,12 +53,12 @@ function setupBtnMarkTerritory() {
                 }
 
                 function overlay_modePicture_Enter() {
-                    function onPhotoDataSuccess() {
+                    function onPhotoDataSuccess(imageData) {
 
                     }
 
-                    function onFail() {
-
+                    function onFail(message) {
+                        alert('Can\'t use camera mode because... ' + message);
                     }
 
                     navigator.camera.getPicture(onPhotoDataSuccess, onFail, {

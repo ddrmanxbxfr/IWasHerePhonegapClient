@@ -1,5 +1,5 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk, setupActiveButton*/
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk, setupActiveButton, getApiUrl*/
 
 function updateUiGeoConfirmation(isGeoReady) {
     "use strict";
@@ -40,93 +40,120 @@ function setupBtnMarkTerritory() {
     }
 
     function modalMarkTerritory() {
+        /* fonction pour init le choose mode... */
+        function setupChooseMode() {
+            function setupBtnChooseMode() {
+                function overlay_EnterMsg_CloseModal() {
+                    startGeolocating();
+                    hideOverlay('overlay_leaveAMessage');
+                }
+
+                function overlay_ChooseMode_GoBackToThisModal() {
+                    modalMarkTerritory();
+                }
+
+                function overlay_modePicture_Enter() {
+                    function onPhotoDataSuccess(imageData) {
+
+                    }
+
+                    function onFail(message) {
+                        alert('Failed because: ' + message);
+                    }
+
+                    navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+                        quality: 50
+                    });
+                }
+
+                function overlay_modeText_Enter() {
+                    function setupBtn() {
+                        function overlay_sendToAPI_HideOverlay() {
+                            addClass(document.getElementById('btnSendToApiClose'), 'off');
+                            startGeolocating();
+                            hideOverlay('overlay_sendingToAPI');
+                        }
+
+                        function sendToApi() {
+                            function overlay_sendToAPI_SetUIForLoading() {
+                                var elementToChange, btnSendToApiClose;
+                                elementToChange = document.getElementById('currentProgress');
+                                btnSendToApiClose = document.getElementById('btnSendToApiClose');
+                                document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
+                                addClass(elementToChange, 'fa-spin');
+                                addClass(elementToChange, 'fa-circle-o-notch');
+                                addClass(btnSendToApiClose, 'off');
+                                removeClass(elementToChange, 'fa-check-square');
+                                removeClass(elementToChange, 'green-icon');
+                            }
+
+
+                            function createGeoJsonFromProps(txtIfPresent) {
+                                var baseData = {
+                                    "type": "Feature",
+                                    "geometry": {
+                                        "type": "Point",
+                                        "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
+                                    },
+                                    "properties": {
+                                        geoAccuracy: currentGeoCoords.accuracy
+                                    }
+                                };
+
+                                if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
+                                    baseData.properties.textNote = txtIfPresent;
+                                }
+                                return baseData;
+                            }
+                            var txtArea, request, data;
+                            txtArea = document.getElementById('txtNote').value;
+
+                            data = createGeoJsonFromProps(txtArea);
+
+                            // Do prepare the request to send to api...
+                            $.post(getApiUrl(), data, function (response) {
+                                if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
+                                    overlay_sendToAPI_LoadingDone();
+                                }
+                            });
+
+                            hideOverlay('overlay_leaveAMessage');
+                            showOverlay('overlay_sendingToAPI');
+                            overlay_sendToAPI_SetUIForLoading();
+                        }
+
+                        document.getElementById('btnSendToApi').onclick = sendToApi;
+                        document.getElementById('btnSendToApiClose').onclick = overlay_sendToAPI_HideOverlay;
+                        document.getElementById('btnCancel').onclick = overlay_ChooseMode_GoBackToThisModal;
+                    }
+
+                    $('#templateMode').empty();
+                    $('#templateMode').append(ich.TemplateTextMode());
+                    setupBtn();
+                }
+
+                document.getElementById('btnModeCancel').onclick = overlay_EnterMsg_CloseModal;
+                document.getElementById('btnModeFile').onclick = overlay_modeText_Enter;
+                document.getElementById('btnModeNote').onclick = overlay_modeText_Enter;
+                document.getElementById('btnModePicture').onclick = overlay_modePicture_Enter;
+            }
+            $('#templateMode').empty();
+            $('#templateMode').append(ich.TemplateChooseMode());
+            setupBtnChooseMode();
+
+        }
+
+
         if (isUserGeoLocated && currentGeoCoords !== undefined) {
             stopGeolocating();
+            setupChooseMode();
             showOverlay('overlay_leaveAMessage');
         }
     }
 
-    function overlay_sendToAPI_HideOverlay() {
-        var btnSendToApiClose;
-        btnSendToApiClose = document.getElementById('btnSendToApiClose');
-        addClass(btnSendToApiClose, 'off');
-        startGeolocating();
-        hideOverlay('overlay_sendingToAPI');
-    }
-
-
-    function sendToApi() {
-        function overlay_sendToAPI_SetUIForLoading() {
-            var elementToChange, btnSendToApiClose;
-            elementToChange = document.getElementById('currentProgress');
-            btnSendToApiClose = document.getElementById('btnSendToApiClose');
-            document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
-            addClass(elementToChange, 'fa-spin');
-            addClass(elementToChange, 'fa-circle-o-notch');
-            addClass(btnSendToApiClose, 'off');
-            removeClass(elementToChange, 'fa-check-square');
-            removeClass(elementToChange, 'green-icon');
-        }
-
-
-        function createGeoJsonFromProps(txtIfPresent) {
-            var baseData = {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Point",
-                    "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
-                },
-                "properties": {
-                    geoAccuracy: currentGeoCoords.accuracy
-                }
-            };
-
-            if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
-                baseData.properties.textNote = txtIfPresent;
-            }
-            return baseData;
-        }
-        var txtArea, request, data;
-        txtArea = document.getElementById('txtNote').value;
-
-        data = createGeoJsonFromProps(txtArea);
-
-        // Do prepare the request to send to api...
-        $.post(getApiUrl(), data, function (response) {
-            if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
-                overlay_sendToAPI_LoadingDone();
-            }
-        });
-
-        hideOverlay('overlay_leaveAMessage');
-        showOverlay('overlay_sendingToAPI');
-        overlay_sendToAPI_SetUIForLoading();
-    }
-
-    function overlay_EnterMsg_CloseModal() {
-        startGeolocating();
-        hideOverlay('overlay_leaveAMessage');
-    }
-
-    function overlay_modeText_Enter() {
-        addClass(document.getElementById('chooseMode'), 'off');
-        removeClass(document.getElementById('textMode'), 'off');
-    }
-
-
-    var btnMarkYourTerritory, btnSendToApi, btnSendToApiClose, btnCancel, btnModeCancel, btnModeFile, btnModeNote, btnModePicture;
+    var btnMarkYourTerritory;
     btnMarkYourTerritory = document.getElementById('roundBtn');
-    btnSendToApi = document.getElementById('btnSendToApi');
-    btnSendToApiClose = document.getElementById('btnSendToApiClose');
-    btnCancel = document.getElementById('btnCancel');
     btnMarkYourTerritory.onclick = modalMarkTerritory;
-    btnSendToApi.onclick = sendToApi;
-    btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
-    btnCancel.onclick = overlay_EnterMsg_CloseModal;
-    btnModeCancel.onclick = overlay_EnterMsg_CloseModal;
-    btnModeFile.onclick = overlay_modeText_Enter;
-    btnModeNote.onclick = overlay_modeText_Enter;
-    btnModePicture.onclick = overlay_modeText_Enter;
 }
 
 
