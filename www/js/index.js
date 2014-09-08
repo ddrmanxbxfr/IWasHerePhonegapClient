@@ -4,6 +4,7 @@ stopGeolocating, currentGeoCoords,$, hideOverlay*/
 
 function overlay_sendToAPI_HideOverlay() {
     "use strict";
+
 }
 
 function overlay_sendToAPI_LoadingDone() {
@@ -30,7 +31,7 @@ function overlay_sendToAPI_LoadingDone() {
     document.getElementById('sendToApiTxtProgress').textContent = "Thanks for marking your territory here !";
 }
 
-function SendToApi() {
+function sendToApi() {
     "use strict";
 
     function createGeoJsonFromProps(txtIfPresent) {
@@ -68,7 +69,7 @@ function SendToApi() {
 }
 
 
-function ModalMarkTerritory() {
+function modalMarkTerritory() {
     "use strict";
     if (isUserGeoLocated && currentGeoCoords !== undefined) {
         stopGeolocating();
@@ -91,8 +92,8 @@ function configurerBtnEvents() {
         }
     };
 
-    btnMarkYourTerritory.onclick = ModalMarkTerritory;
-    btnSendToApi.onclick = SendToApi;
+    btnMarkYourTerritory.onclick = modalMarkTerritory;
+    btnSendToApi.onclick = sendToApi;
     btnSendToApiClose.onclick = overlay_sendToAPI_HideOverlay;
 }
 
