@@ -98,7 +98,7 @@ function setupBtnMarkTerritory() {
 
                     // Do prepare the request to send to api...
                     $.post(getApiUrl(), data, function (response) {
-                        apiImageToSubmit = null;
+                        apiImageToSubmit = undefined;
 
                         if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
                             overlay_sendToAPI_LoadingDone();
@@ -116,8 +116,8 @@ function setupBtnMarkTerritory() {
                     startGeolocating();
                     hideOverlay('overlay_leaveAMessage');
                     // Clear memory for cached vars
-                    apiImageToSubmit = null;
-                    apiTextToSubmit = null;
+                    apiImageToSubmit = undefined;
+                    apiTextToSubmit = undefined;
                 }
 
                 function overlay_modePicture_Enter() {
