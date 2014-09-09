@@ -100,7 +100,7 @@ function fetchNearMarksFromAPI() {
                 }
             })
         }
-
+        imgDataToAdd = undefined;
         addClass(document.getElementById('overlay_loadingDataAndGeoLocating'), 'off');
     });
 }
