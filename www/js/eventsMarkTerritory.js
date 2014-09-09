@@ -1,5 +1,8 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk, setupActiveButton, getApiUrl*/
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk, setupActiveButton, getApiUrl, alert*/
+
+var apiTextToSubmit, apiImageToSubmit;
+
 
 function updateUiGeoConfirmation(isGeoReady) {
     "use strict";
@@ -46,6 +49,9 @@ function setupBtnMarkTerritory() {
                 function overlay_EnterMsg_CloseModal() {
                     startGeolocating();
                     hideOverlay('overlay_leaveAMessage');
+                    // Clear memory for cached vars
+                    apiImageToSubmit = null;
+                    apiTextToSubmit = null;
                 }
 
                 function overlay_ChooseMode_GoBackToThisModal() {
@@ -54,7 +60,7 @@ function setupBtnMarkTerritory() {
 
                 function overlay_modePicture_Enter() {
                     function onPhotoDataSuccess(imageData) {
-
+                        apiImageToSubmit = "data:image/jpeg;base64," + imageData;
                     }
 
                     function onFail(message) {

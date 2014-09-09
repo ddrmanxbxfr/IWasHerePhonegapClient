@@ -39,6 +39,7 @@
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/index.html \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/phonegap.js \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/plugins \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/spec \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/spec.html \
@@ -111,6 +112,12 @@
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/overlay.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/ui_operations.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/js/zepto.min.js \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/plugins/org.apache.cordova.camera \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/plugins/org.apache.cordova.camera/www \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/Camera.js \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraConstants.js \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js \
+/Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res/icon \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res/screen \
 /Users/ddrmanxbxfr/prog/apes_iwashere/iwashere_web/platforms/android/assets/www/res/icon/android \
