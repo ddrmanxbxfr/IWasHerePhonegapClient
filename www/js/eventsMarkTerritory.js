@@ -123,6 +123,14 @@ function setupBtnMarkTerritory() {
                                 }
                             });
 
+
+                            // Picture mode..
+                            if (apiImageToSubmit !== undefined && apiImageToSubmit !== null) {
+                                $.post(getApiUrl() + '/picture', apiImageToSubmit, function (response) {
+                                    console.log(response);
+                                });
+                            }
+
                             hideOverlay('overlay_leaveAMessage');
                             showOverlay('overlay_sendingToAPI');
                             overlay_sendToAPI_SetUIForLoading();
