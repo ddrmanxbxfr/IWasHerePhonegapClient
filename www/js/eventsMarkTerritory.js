@@ -68,7 +68,8 @@ function setupBtnMarkTerritory() {
                     }
 
                     navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
-                        quality: 50
+                        quality: 50,
+                        destinationType: navigator.camera.DestinationType.DATA_URL
                     });
                 }
 
@@ -126,8 +127,9 @@ function setupBtnMarkTerritory() {
 
                             // Picture mode..
                             if (apiImageToSubmit !== undefined && apiImageToSubmit !== null) {
-                                $.post(getApiUrl() + '/picture', apiImageToSubmit, function (response) {
+                                $.post(getApiUrl() + 'picture/' + currentGeoCoords.lat + "/" + currentGeoCoords.lng, apiImageToSubmit, function (response) {
                                     console.log(response);
+                                    apiImageToSubmit = null;
                                 });
                             }
 

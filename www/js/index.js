@@ -27,7 +27,7 @@ function setupActiveButton(buttonNameActive, buttonNameOld) {
 
 function getApiUrl() {
     "use strict";
-    return "http://vps84512.ovh.net:4712/api/iwashere/";
+    return "http://192.168.2.21:4712/api/iwashere/";
 }
 
 function setupSideMenuBtn() {

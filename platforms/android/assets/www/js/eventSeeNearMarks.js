@@ -1,5 +1,5 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords,$, hideOverlay, ich, setupBtnMarkTerritory, updateUiGeoConfirmation, forceCloseSideNav, templateLoaded, verifierSiAccuracyEstOk*/
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich, setupBtnMarkTerritory, updateUiGeoConfirmation, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk, setupActiveButton, fetchNearMarksFromAPI, getApiUrl, parseApiResults, addClass*/
 function setupNearMarksView() {
     "use strict";
     forceCloseSideNav();

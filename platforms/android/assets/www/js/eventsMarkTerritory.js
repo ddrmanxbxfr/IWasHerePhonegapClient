@@ -1,5 +1,8 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk, setupActiveButton, getApiUrl*/
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich, addClass, removeClass, forceCloseSideNav, templateLoaded:true, verifierSiAccuracyEstOk, setupActiveButton, getApiUrl, alert*/
+
+var apiTextToSubmit, apiImageToSubmit;
+
 
 function updateUiGeoConfirmation(isGeoReady) {
     "use strict";
@@ -46,6 +49,9 @@ function setupBtnMarkTerritory() {
                 function overlay_EnterMsg_CloseModal() {
                     startGeolocating();
                     hideOverlay('overlay_leaveAMessage');
+                    // Clear memory for cached vars
+                    apiImageToSubmit = null;
+                    apiTextToSubmit = null;
                 }
 
                 function overlay_ChooseMode_GoBackToThisModal() {
@@ -54,7 +60,7 @@ function setupBtnMarkTerritory() {
 
                 function overlay_modePicture_Enter() {
                     function onPhotoDataSuccess(imageData) {
-
+                        apiImageToSubmit = "data:image/jpeg;base64," + imageData;
                     }
 
                     function onFail(message) {
@@ -62,7 +68,8 @@ function setupBtnMarkTerritory() {
                     }
 
                     navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
-                        quality: 50
+                        quality: 50,
+                        destinationType : navigator.camera.DestinationType.DATA_URL
                     });
                 }
 
@@ -116,6 +123,15 @@ function setupBtnMarkTerritory() {
                                     overlay_sendToAPI_LoadingDone();
                                 }
                             });
+
+
+                            // Picture mode..
+                            if (apiImageToSubmit !== undefined && apiImageToSubmit !== null) {
+                                $.post(getApiUrl() + 'picture', apiImageToSubmit, function (response) {
+                                    console.log(response);
+                                    apiImageToSubmit = null;
+                                });
+                            }
 
                             hideOverlay('overlay_leaveAMessage');
                             showOverlay('overlay_sendingToAPI');
