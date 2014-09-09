@@ -60,6 +60,11 @@ function setupBtnMarkTerritory() {
                         removeClass(elementToChange, 'green-icon');
                     }
 
+                    function overlay_sendToAPI_HideOverlay() {
+                        addClass(document.getElementById('btnSendToApiClose'), 'off');
+                        startGeolocating();
+                        hideOverlay('overlay_sendingToAPI');
+                    }
 
                     function createGeoJsonFromProps(txtIfPresent) {
                         var baseData = {
@@ -100,6 +105,7 @@ function setupBtnMarkTerritory() {
                     hideOverlay('overlay_leaveAMessage');
                     showOverlay('overlay_sendingToAPI');
                     overlay_sendToAPI_SetUIForLoading();
+                    document.getElementById('btnSendToApiClose').onclick = overlay_sendToAPI_HideOverlay;
                 }
 
 
@@ -130,19 +136,11 @@ function setupBtnMarkTerritory() {
 
                 function overlay_modeText_Enter() {
                     function setupBtn() {
-                        function overlay_sendToAPI_HideOverlay() {
-                            addClass(document.getElementById('btnSendToApiClose'), 'off');
-                            startGeolocating();
-                            hideOverlay('overlay_sendingToAPI');
-                        }
-
                         function goBackToChooseMode() {
                             apiTextToSubmit = document.getElementById('txtNote').value;
                             modalMarkTerritory();
                         }
-
                         document.getElementById('btnSendToApi').onclick = goBackToChooseMode;
-                        document.getElementById('btnSendToApiClose').onclick = overlay_sendToAPI_HideOverlay;
                         document.getElementById('btnCancel').onclick = modalMarkTerritory;
                     }
 
