@@ -83,17 +83,46 @@ function fetchNearMarksFromAPI() {
         }
 
 
+        function parsePictures(data) {
+            "use strict";
+            var list, listItems, len, iCpt;
+            len = data.length;
+            listItems = [];
+            var eleToIns;
+            for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
+                eleToIns = ich.TemplateShowNearMarks_ImageItem();
+                eleToIns[0].children[0].src = data[iCpt];
+                eleToIns[0].children[0].style.width = "100px";
+                eleToIns[0].children[0].style.height = "100px";
+                listItems.push(eleToIns);
+            }
+
+            list = ich.TemplateShowNearMarks_ListItem();
+
+            len = listItems.length;
+
+            for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
+                list.append(listItems[iCpt]);
+            }
+
+            $('#listNearMarks').append(ich.TemplateShowNearMarks_HeaderList({
+                title: "Pictures"
+            }));
+
+            $('#listNearMarks').append(list);
+        }
+
+
         document.getElementById('loadingModal').textContent = "Oiling the crank.";
         var remainingPicturesToFetch = parseApiResults(data);
 
         document.getElementById('loadingModal').textContent = "Drinking beer with bender.";
         var len = remainingPicturesToFetch.length;
         var imgDataToAdd = [];
-        console.log('len of pics' + len);
         for (var iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
             $.ajax({
                 type: 'GET',
-                url: getApiUrl() + 'picture' + '/' + currentGeoCoords.lat + '/' + currentGeoCoords.lng,
+                url: getApiUrl() + 'picture' + '/' + remainingPicturesToFetch[iCpt],
                 async: false, // TODO Remettre a true
                 success: function (data) {
                     imgDataToAdd.push(data);
@@ -103,6 +132,8 @@ function fetchNearMarksFromAPI() {
                 }
             })
         }
+
+        parsePictures(imgDataToAdd);
         imgDataToAdd = undefined;
         addClass(document.getElementById('overlay_loadingDataAndGeoLocating'), 'off');
     });

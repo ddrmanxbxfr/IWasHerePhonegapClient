@@ -83,13 +83,18 @@ function fetchNearMarksFromAPI() {
         }
 
 
-        function parseApiResults(data) {
+        function parsePictures(data) {
             "use strict";
             var list, listItems, len, iCpt;
             len = data.length;
             listItems = [];
+            var eleToIns;
             for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
-               listItems.push(ich.TemplateShowNearMarks_ImageItem({ url: data[iCpt] }));
+                eleToIns = ich.TemplateShowNearMarks_ImageItem();
+                eleToIns[0].children[0].src = data[iCpt];
+                eleToIns[0].children[0].style.width = "100px";
+                eleToIns[0].children[0].style.height = "100px";
+                listItems.push(eleToIns);
             }
 
             list = ich.TemplateShowNearMarks_ListItem();
@@ -117,7 +122,7 @@ function fetchNearMarksFromAPI() {
         for (var iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
             $.ajax({
                 type: 'GET',
-                url: getApiUrl() + 'picture' + '/' + currentGeoCoords.lat + '/' + currentGeoCoords.lng,
+                url: getApiUrl() + 'picture' + '/' + remainingPicturesToFetch[iCpt],
                 async: false, // TODO Remettre a true
                 success: function (data) {
                     imgDataToAdd.push(data);
