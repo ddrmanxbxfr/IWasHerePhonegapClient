@@ -35,6 +35,7 @@ function fetchNearMarksFromAPI() {
             var list, listStatistics, listItems, listOfPicturesToFetch, len, iCpt;
             len = data.features.length;
             listItems = [];
+            listOfPicturesToFetch = [];
             for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
                 if (data.features[iCpt].properties.textNote !== undefined) {
                     listItems.push(ich.TemplateShowNearMarks_Item({
@@ -45,6 +46,10 @@ function fetchNearMarksFromAPI() {
                         name: data.features[iCpt].properties.geoAccuracy
                     }));
                 }
+
+                if (data.features[iCpt].properties.pictureid !== undefined) {
+                    listOfPicturesToFetch.push(data.features[iCpt].properties.pictureid);
+                }
             }
 
             list = ich.TemplateShowNearMarks_ListItem();
@@ -54,9 +59,6 @@ function fetchNearMarksFromAPI() {
 
             for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
                 list.append(listItems[iCpt]);
-                if (listItems[iCpt].properties.pictureid !== undefined) {
-                    listOfPicturesToFetch.append(listItems[iCpt].properties.pictureid);
-                }
             }
 
             listStatistics.append(ich.TemplateShowNearMarks_Item({
@@ -87,11 +89,12 @@ function fetchNearMarksFromAPI() {
         document.getElementById('loadingModal').textContent = "Drinking beer with bender.";
         var len = remainingPicturesToFetch.length;
         var imgDataToAdd = [];
+        console.log('len of pics' + len);
         for (var iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
             $.ajax({
                 type: 'GET',
                 url: getApiUrl() + 'picture' + '/' + currentGeoCoords.lat + '/' + currentGeoCoords.lng,
-                async: false // TODO Remettre a true
+                async: false, // TODO Remettre a true
                 success: function (data) {
                     imgDataToAdd.push(data);
                 },

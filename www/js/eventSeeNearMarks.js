@@ -35,8 +35,9 @@ function fetchNearMarksFromAPI() {
             var list, listStatistics, listItems, listOfPicturesToFetch, len, iCpt;
             len = data.features.length;
             listItems = [];
+            listOfPicturesToFetch = [];
             for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
-                if (data.features[iCpt].properties.hasOwnProperty('textNote')) {
+                if (data.features[iCpt].properties.textNote !== undefined) {
                     listItems.push(ich.TemplateShowNearMarks_Item({
                         name: data.features[iCpt].properties.textNote
                     }));
@@ -44,6 +45,10 @@ function fetchNearMarksFromAPI() {
                     listItems.push(ich.TemplateShowNearMarks_Item({
                         name: data.features[iCpt].properties.geoAccuracy
                     }));
+                }
+
+                if (data.features[iCpt].properties.pictureid !== undefined) {
+                    listOfPicturesToFetch.push(data.features[iCpt].properties.pictureid);
                 }
             }
 
@@ -54,9 +59,6 @@ function fetchNearMarksFromAPI() {
 
             for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
                 list.append(listItems[iCpt]);
-                if (listItems[iCpt].properties.hasOwnProperty('pictureid')) {
-                    listOfPicturesToFetch.append(listItems[iCpt].properties.pictureid);
-                }
             }
 
             listStatistics.append(ich.TemplateShowNearMarks_Item({
@@ -81,6 +83,31 @@ function fetchNearMarksFromAPI() {
         }
 
 
+        function parseApiResults(data) {
+            "use strict";
+            var list, listItems, len, iCpt;
+            len = data.length;
+            listItems = [];
+            for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
+               listItems.push(ich.TemplateShowNearMarks_ImageItem({ url: data[iCpt] }));
+            }
+
+            list = ich.TemplateShowNearMarks_ListItem();
+
+            len = listItems.length;
+
+            for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
+                list.append(listItems[iCpt]);
+            }
+
+            $('#listNearMarks').append(ich.TemplateShowNearMarks_HeaderList({
+                title: "Pictures"
+            }));
+
+            $('#listNearMarks').append(list);
+        }
+
+
         document.getElementById('loadingModal').textContent = "Oiling the crank.";
         var remainingPicturesToFetch = parseApiResults(data);
 
@@ -100,6 +127,8 @@ function fetchNearMarksFromAPI() {
                 }
             })
         }
+
+        parsePictures(imgDataToAdd);
         imgDataToAdd = undefined;
         addClass(document.getElementById('overlay_loadingDataAndGeoLocating'), 'off');
     });
