@@ -110,6 +110,12 @@ function setupBtnMarkTerritory() {
                                 if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
                                     baseData.properties.textNote = txtIfPresent;
                                 }
+
+                                // Picture mode..
+                                if (apiImageToSubmit !== undefined && apiImageToSubmit !== null) {
+                                    baseData.properties.picture = apiImageToSubmit;
+                                }
+
                                 return baseData;
                             }
                             var txtArea, request, data;
@@ -119,19 +125,12 @@ function setupBtnMarkTerritory() {
 
                             // Do prepare the request to send to api...
                             $.post(getApiUrl(), data, function (response) {
+                                apiImageToSubmit = null;
+
                                 if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
                                     overlay_sendToAPI_LoadingDone();
                                 }
                             });
-
-
-                            // Picture mode..
-                            if (apiImageToSubmit !== undefined && apiImageToSubmit !== null) {
-                                $.post(getApiUrl() + 'picture/' + currentGeoCoords.lat + "/" + currentGeoCoords.lng, apiImageToSubmit, function (response) {
-                                    console.log(response);
-                                    apiImageToSubmit = null;
-                                });
-                            }
 
                             hideOverlay('overlay_leaveAMessage');
                             showOverlay('overlay_sendingToAPI');
