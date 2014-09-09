@@ -123,8 +123,7 @@ function setupBtnMarkTerritory() {
                 function overlay_modePicture_Enter() {
                     function onPhotoDataSuccess(imageData) {
                         apiImageToSubmit = "data:image/jpeg;base64," + imageData;
-                        addClass(document.getElementById('btnModePicture'), 'button-ready');
-                        removeClass(document.getElementById('btnModeSendApi'), 'off');
+                        setupBtnColor();
                     }
 
                     function onFail(message) {

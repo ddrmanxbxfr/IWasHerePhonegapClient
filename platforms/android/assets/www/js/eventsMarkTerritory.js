@@ -46,6 +46,72 @@ function setupBtnMarkTerritory() {
         /* fonction pour init le choose mode... */
         function setupChooseMode() {
             function setupBtnChooseMode() {
+
+                function sendToApi() {
+                    function overlay_sendToAPI_SetUIForLoading() {
+                        var elementToChange, btnSendToApiClose;
+                        elementToChange = document.getElementById('currentProgress');
+                        btnSendToApiClose = document.getElementById('btnSendToApiClose');
+                        document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
+                        addClass(elementToChange, 'fa-spin');
+                        addClass(elementToChange, 'fa-circle-o-notch');
+                        addClass(btnSendToApiClose, 'off');
+                        removeClass(elementToChange, 'fa-check-square');
+                        removeClass(elementToChange, 'green-icon');
+                    }
+
+                    function overlay_sendToAPI_HideOverlay() {
+                        addClass(document.getElementById('btnSendToApiClose'), 'off');
+                        startGeolocating();
+                        // Clear memory for cached vars
+                        apiImageToSubmit = null;
+                        apiTextToSubmit = null;
+                        hideOverlay('overlay_sendingToAPI');
+                    }
+
+                    function createGeoJsonFromProps(txtIfPresent) {
+                        var baseData = {
+                            "type": "Feature",
+                            "geometry": {
+                                "type": "Point",
+                                "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
+                            },
+                            "properties": {
+                                geoAccuracy: currentGeoCoords.accuracy
+                            }
+                        };
+
+                        if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
+                            baseData.properties.textNote = txtIfPresent;
+                        }
+
+                        // Picture mode..
+                        if (apiImageToSubmit !== undefined && apiImageToSubmit !== null) {
+                            baseData.properties.picture = apiImageToSubmit;
+                        }
+
+                        return baseData;
+                    }
+                    var request, data;
+
+                    data = createGeoJsonFromProps(apiTextToSubmit);
+
+                    // Do prepare the request to send to api...
+                    $.post(getApiUrl(), data, function (response) {
+                        apiImageToSubmit = null;
+
+                        if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
+                            overlay_sendToAPI_LoadingDone();
+                        }
+                    });
+
+                    hideOverlay('overlay_leaveAMessage');
+                    showOverlay('overlay_sendingToAPI');
+                    overlay_sendToAPI_SetUIForLoading();
+                    document.getElementById('btnSendToApiClose').onclick = overlay_sendToAPI_HideOverlay;
+                }
+
+
                 function overlay_EnterMsg_CloseModal() {
                     startGeolocating();
                     hideOverlay('overlay_leaveAMessage');
@@ -54,13 +120,10 @@ function setupBtnMarkTerritory() {
                     apiTextToSubmit = null;
                 }
 
-                function overlay_ChooseMode_GoBackToThisModal() {
-                    modalMarkTerritory();
-                }
-
                 function overlay_modePicture_Enter() {
                     function onPhotoDataSuccess(imageData) {
                         apiImageToSubmit = "data:image/jpeg;base64," + imageData;
+                        setupBtnColor();
                     }
 
                     function onFail(message) {
@@ -75,71 +138,12 @@ function setupBtnMarkTerritory() {
 
                 function overlay_modeText_Enter() {
                     function setupBtn() {
-                        function overlay_sendToAPI_HideOverlay() {
-                            addClass(document.getElementById('btnSendToApiClose'), 'off');
-                            startGeolocating();
-                            hideOverlay('overlay_sendingToAPI');
+                        function goBackToChooseMode() {
+                            apiTextToSubmit = document.getElementById('txtNote').value;
+                            modalMarkTerritory();
                         }
-
-                        function sendToApi() {
-                            function overlay_sendToAPI_SetUIForLoading() {
-                                var elementToChange, btnSendToApiClose;
-                                elementToChange = document.getElementById('currentProgress');
-                                btnSendToApiClose = document.getElementById('btnSendToApiClose');
-                                document.getElementById('sendToApiTxtProgress').textContent = "Please wait while our dog chews your infos.";
-                                addClass(elementToChange, 'fa-spin');
-                                addClass(elementToChange, 'fa-circle-o-notch');
-                                addClass(btnSendToApiClose, 'off');
-                                removeClass(elementToChange, 'fa-check-square');
-                                removeClass(elementToChange, 'green-icon');
-                            }
-
-
-                            function createGeoJsonFromProps(txtIfPresent) {
-                                var baseData = {
-                                    "type": "Feature",
-                                    "geometry": {
-                                        "type": "Point",
-                                        "coordinates": [currentGeoCoords.lng, currentGeoCoords.lat]
-                                    },
-                                    "properties": {
-                                        geoAccuracy: currentGeoCoords.accuracy
-                                    }
-                                };
-
-                                if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
-                                    baseData.properties.textNote = txtIfPresent;
-                                }
-
-                                // Picture mode..
-                                if (apiImageToSubmit !== undefined && apiImageToSubmit !== null) {
-                                    baseData.properties.picture = apiImageToSubmit;
-                                }
-
-                                return baseData;
-                            }
-                            var txtArea, request, data;
-                            txtArea = document.getElementById('txtNote').value;
-
-                            data = createGeoJsonFromProps(txtArea);
-
-                            // Do prepare the request to send to api...
-                            $.post(getApiUrl(), data, function (response) {
-                                apiImageToSubmit = null;
-
-                                if (document.getElementById('overlay_sendingToAPI').classList.contains('off') === false) {
-                                    overlay_sendToAPI_LoadingDone();
-                                }
-                            });
-
-                            hideOverlay('overlay_leaveAMessage');
-                            showOverlay('overlay_sendingToAPI');
-                            overlay_sendToAPI_SetUIForLoading();
-                        }
-
-                        document.getElementById('btnSendToApi').onclick = sendToApi;
-                        document.getElementById('btnSendToApiClose').onclick = overlay_sendToAPI_HideOverlay;
-                        document.getElementById('btnCancel').onclick = overlay_ChooseMode_GoBackToThisModal;
+                        document.getElementById('btnSendToApi').onclick = goBackToChooseMode;
+                        document.getElementById('btnCancel').onclick = modalMarkTerritory;
                     }
 
                     $('#templateMode').empty();
@@ -148,13 +152,31 @@ function setupBtnMarkTerritory() {
                 }
 
                 document.getElementById('btnModeCancel').onclick = overlay_EnterMsg_CloseModal;
-                document.getElementById('btnModeFile').onclick = overlay_modeText_Enter;
                 document.getElementById('btnModeNote').onclick = overlay_modeText_Enter;
                 document.getElementById('btnModePicture').onclick = overlay_modePicture_Enter;
+                document.getElementById('btnModeSendApi').onclick = sendToApi;
             }
+
+
+            function setupBtnColor() {
+                var addClassHappened = false;
+                if (apiImageToSubmit !== undefined && apiImageToSubmit !== null) {
+                    addClass(document.getElementById('btnModePicture'), 'button-ready');
+                    addClassHappened = true;
+                }
+                if (apiTextToSubmit !== undefined && apiTextToSubmit !== null) {
+                    addClass(document.getElementById('btnModeNote'), 'button-ready');
+                    addClassHappened = true;
+                }
+                if (addClassHappened) {
+                    removeClass(document.getElementById('btnModeSendApi'), 'off');
+                }
+            }
+
             $('#templateMode').empty();
             $('#templateMode').append(ich.TemplateChooseMode());
             setupBtnChooseMode();
+            setupBtnColor();
 
         }
 
