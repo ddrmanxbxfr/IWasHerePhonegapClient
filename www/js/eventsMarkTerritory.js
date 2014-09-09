@@ -63,6 +63,9 @@ function setupBtnMarkTerritory() {
                     function overlay_sendToAPI_HideOverlay() {
                         addClass(document.getElementById('btnSendToApiClose'), 'off');
                         startGeolocating();
+                        // Clear memory for cached vars
+                        apiImageToSubmit = null;
+                        apiTextToSubmit = null;
                         hideOverlay('overlay_sendingToAPI');
                     }
 
@@ -150,7 +153,6 @@ function setupBtnMarkTerritory() {
                 }
 
                 document.getElementById('btnModeCancel').onclick = overlay_EnterMsg_CloseModal;
-                document.getElementById('btnModeFile').onclick = overlay_modeText_Enter;
                 document.getElementById('btnModeNote').onclick = overlay_modeText_Enter;
                 document.getElementById('btnModePicture').onclick = overlay_modePicture_Enter;
                 document.getElementById('btnModeSendApi').onclick = sendToApi;
