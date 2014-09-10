@@ -80,6 +80,7 @@
 
             <div class="center">
                 <p id="geolocationStatus"></p>
+                <p>Accuracy is at : <span id="gpsAccuracy">0</span>m</p>
             </div>
 
             <div class="round-button">
@@ -94,9 +95,8 @@
             </button>
             <button class="topcoat-button--large" id="btnModeNote"><i class="fa fa-file-text"></i>
             </button>
-            <button class="topcoat-button--large" id="btnModeFile"><i class="fa fa-file-archive-o"></i>
-            </button>
             <div class="topcoat-overlay-buttons">
+                <button role="button" class="topcoat-button--cta off" id="btnModeSendApi">Send to API</button>
                 <button role="button" class="topcoat-button--cta" id="btnModeCancel">Cancel</button>
             </div>
         </div>
@@ -119,6 +119,7 @@
             <div class="topcoat-overlay-bg"></div>
             <aside class="topcoat-overlay center">
                 <h3 class="topcoat-overlay__title" id="loadingModal">Hold on buddy we got to find you before !</h3>
+                <p>Accuracy is at : <span id="gpsAccuracy">0</span>m</p>
                 <i class="fa fa-circle-o-notch fa-spin" id="currentProgress"></i>
             </aside>
         </div>
@@ -139,6 +140,12 @@
     <script id="TemplateShowNearMarks_Item" type="text/html">
         <li class="topcoat-list__item">
             {{ name }}
+        </li>
+    </script>
+
+    <script id="TemplateShowNearMarks_ImageItem" type="text/html">
+    <li class="topcoat-list__item">
+            <img></img>
         </li>
     </script>
 </body>

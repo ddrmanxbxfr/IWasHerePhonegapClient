@@ -1,8 +1,9 @@
 /*global console, onSuccessGeoLoc, onErrorGeoLoc, watchGeoID, isUserGeoLocated, showOverlay, startGeolocating,
-stopGeolocating, currentGeoCoords,$, hideOverlay, ich, setupBtnMarkTerritory, updateUiGeoConfirmation*/
+stopGeolocating, currentGeoCoords,$, hideOverlay, ich, setupBtnMarkTerritory, updateUiGeoConfirmation, addClass, removeClass, setupMarkTerritoryView, setupNearMarksView*/
 var templateLoaded;
 
 function forceCloseSideNav() {
+    "use strict";
     if (document.body.classList.contains('left-nav')) {
         document.body.classList.remove('left-nav');
     }
@@ -19,11 +20,13 @@ function animateSideMenu() {
 
 
 function setupActiveButton(buttonNameActive, buttonNameOld) {
+    "use strict";
     removeClass(document.getElementById(buttonNameOld), 'is-active');
     addClass(document.getElementById(buttonNameActive), 'is-active');
 }
 
 function getApiUrl() {
+    "use strict";
     return "http://vps84512.ovh.net:4712/api/iwashere/";
 }
 

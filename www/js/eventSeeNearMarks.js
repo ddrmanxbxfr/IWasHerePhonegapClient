@@ -9,6 +9,9 @@ function setupNearMarksView() {
     setupActiveButton('side-navBtnSeeNearMarks', 'side-navBtnMarkTerritory');
     if (watchGeoID === undefined || watchGeoID === null) {
         startGeolocating();
+    } else {
+        stopGeolocating();
+        startGeolocating();
     }
 }
 

@@ -302,3 +302,15 @@ You could find it at the following address https://developer.apple.com/icloud/do
 2014-09-08 17:52:12.085 I was here ![32343:70b] THREAD WARNING: ['Camera'] took '4736.006836' ms. Plugin should use a background thread.
 2014-09-08 17:52:13.115 I was here ![32343:70b] Camera.getPicture: source type 1 not available.
 2014-09-08 17:52:14.401 I was here ![32343:70b] THREAD WARNING: ['Camera'] took '1285.738037' ms. Plugin should use a background thread.
+2014-09-10 16:21:49.844 I was here ![13573:70b] Multi-tasking -> Device: YES, App: YES
+2014-09-10 16:21:49.877 I was here ![13573:70b] Unlimited access to network resources
+2014-09-10 16:21:49.883 I was here ![13573:70b] 
+
+Started backup to iCloud! Please be careful.
+Your application might rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines"
+You could find it at the following address https://developer.apple.com/icloud/documentation/data-storage/ .
+
+2014-09-10 16:21:50.985 I was here ![13573:70b] Resetting plugins due to page load.
+2014-09-10 16:21:51.325 I was here ![13573:70b] Finished load of: file:///Users/ddrmanxbxfr/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/5D3BBEC1-33F5-4483-8FBA-182FFE7F4692/I%20was%20here%20!.app/www/index.html
+2014-09-10 16:22:17.161 I was here ![13573:70b] Received memory warning.

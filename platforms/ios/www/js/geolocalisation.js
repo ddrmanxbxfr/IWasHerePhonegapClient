@@ -38,7 +38,8 @@ function onSuccessGeoLoc(position) {
 function onErrorGeoLoc(error) {
     "use strict";
     alert('code: ' + error.code + '\n' +
-        'message: ' + error.message + '\n');
+        'message: ' + error.message + '\n' +
+         'Please enable GPS/Geolocalisation service and Internet');
 }
 
 function stopGeolocating() {
@@ -52,7 +53,7 @@ function stopGeolocating() {
 function startGeolocating() {
     "use strict";
     var options = {
-        timeout: 30000,
+        timeout: 5000,
         enableHighAccuracy: true
     };
     watchGeoID = navigator.geolocation.watchPosition(onSuccessGeoLoc, onErrorGeoLoc, options);
