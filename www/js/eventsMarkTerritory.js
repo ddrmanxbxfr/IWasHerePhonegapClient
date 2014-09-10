@@ -214,6 +214,7 @@ function setupMarkTerritoryView() {
 
 function parseGeoResultsMarkTerritory(position) {
     "use strict";
+    document.getElementById('gpsAccuracy').textContent = position.coords.accuracy;
     if (verifierSiAccuracyEstOk(position)) {
         updateUiGeoConfirmation(true);
     } else {

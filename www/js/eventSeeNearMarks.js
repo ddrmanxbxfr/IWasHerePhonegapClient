@@ -14,6 +14,7 @@ function setupNearMarksView() {
 
 function parseGeoResultsSeeNearMarks(position) {
     "use strict";
+    document.getElementById('gpsAccuracy').textContent = position.coords.accuracy;
     if (verifierSiAccuracyEstOk(position)) {
         /// OK WE CAN DOWNLOAD FROM API !
         document.getElementById('loadingModal').textContent = "Asking dog to sniff around for marks...";
