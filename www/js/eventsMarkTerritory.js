@@ -69,7 +69,7 @@ function setupBtnMarkTerritory() {
                         hideOverlay('overlay_sendingToAPI');
                     }
 
-                    function createGeoJsonFromProps(txtIfPresent) {
+                    function createGeoJsonFromProps() {
                         var baseData = {
                             "type": "Feature",
                             "geometry": {
@@ -81,8 +81,8 @@ function setupBtnMarkTerritory() {
                             }
                         };
 
-                        if (txtIfPresent !== undefined && txtIfPresent.length > 0) {
-                            baseData.properties.textNote = txtIfPresent;
+                        if (apiTextToSubmit !== undefined && apiTextToSubmit !== null &&  apiTextToSubmit.length > 0) {
+                            baseData.properties.textNote = apiTextToSubmit;
                         }
 
                         // Picture mode..
@@ -94,7 +94,7 @@ function setupBtnMarkTerritory() {
                     }
                     var request, data;
 
-                    data = createGeoJsonFromProps(apiTextToSubmit);
+                    data = createGeoJsonFromProps();
 
                     // Do prepare the request to send to api...
                     $.post(getApiUrl(), data, function (response) {

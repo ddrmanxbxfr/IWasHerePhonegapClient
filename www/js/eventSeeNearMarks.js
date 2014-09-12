@@ -95,7 +95,7 @@ function fetchNearMarksFromAPI() {
             var eleToIns;
             for (iCpt = 0; iCpt < len; iCpt = iCpt + 1) {
                 eleToIns = ich.TemplateShowNearMarks_ImageItem();
-                eleToIns[0].children[0].src = data[iCpt];
+                eleToIns[0].children[0].id = data[iCpt];
                 eleToIns[0].children[0].style.width = "100px";
                 eleToIns[0].children[0].style.height = "100px";
                 listItems.push(eleToIns);
@@ -127,9 +127,9 @@ function fetchNearMarksFromAPI() {
             $.ajax({
                 type: 'GET',
                 url: getApiUrl() + 'picture' + '/' + remainingPicturesToFetch[iCpt],
-                async: false, // TODO Remettre a true
+                async: true, // TODO Remettre a true
                 success: function (data) {
-                    imgDataToAdd.push(data);
+                  document.getElementById(remainingPicturesToFetch[iCpt]).src = data;
                 },
                 error: function (xhr, type) {
                     console.log('fetch image error during ajax');
@@ -137,7 +137,7 @@ function fetchNearMarksFromAPI() {
             })
         }
 
-        parsePictures(imgDataToAdd);
+        parsePictures(remainingPicturesToFetch);
         imgDataToAdd = undefined;
         addClass(document.getElementById('overlay_loadingDataAndGeoLocating'), 'off');
     });
